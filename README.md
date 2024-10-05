@@ -4,6 +4,6 @@ Breve descrição do grupo
 * Turno: [L]XX
 * Grupo: YY
 * Alunos:
-    - Aluno1 upZZZZZ 
-    - Aluno2 upZZZZZ
-    - Aluno3 upZZZZZ
+    - Duarte Marques up202204973 
+    - Maria Vieira up202204802
+    - Marta Cruz up202205028
