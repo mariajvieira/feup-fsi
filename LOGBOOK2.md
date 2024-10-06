@@ -3,32 +3,32 @@
 
 ## Identificação 
 
-- CVE-2022-26134: An OGNL injection vulnerability would allow an unauthenticated attacker to execute arbitrary code on a Confluence Server or Data Center instance. This vulnerability affected the HTPP server.
-- The affected versions are from 1.3.0 before 7.4.17, from 7.13.0 before 7.13.7, from 7.14.0 before 7.14.3, from 7.15.0 before 7.15.2, from 7.16.0 before 7.16.4, from 7.17.0 before 7.17.4, and from 7.18.0 before 7.18.1.
+- CVE-2022-26134 is a critical vulnerability in Atlassian Confluence Server and Data Center, where an Object-Graph Navigation Language (OGNL) injection allows an unauthenticated attacker to execute arbitrary code on a Confluence server or data center instance. 
+- This vulnerability impacts all versions of Confluence Server and Data Center before the following fixed versions 7.4.17, 7.13.7, 7.14.3, 7.15.2, 7.16.4, 7.17.4, 7.18.1, and newer.
 
 
 ## Catalogação
 
-- This vulnerability was published in 2022-06-03 and the last modified date for it is 2022-06-30.
+- This vulnerability was published in 02/06/2022 and the last modified date for it is 30/06/2022.
+- Discovered by Volexity after detecting exploitation in corporate environments.
 - Severity level: 9.8 CRITICAL
+- Automated Static Analysis ---- ?
 
-
-Catalogação: o que se sabe sobre o seu reporting, quem, quando, como, bug-bounty, nível de gravidade, etc. (max 4 itens com 20 palavras cada)
-
-
-- Automated Static Analysis:
-Automated static analysis, commonly referred to as Static Application Security Testing (SAST), can find some instances of this weakness by analyzing source code (or binary/compiled code) without having to execute it. Typically, this is done by building a model of data flow and control flow, then searching for potentially-vulnerable patterns that connect "sources" (origins of input) with "sinks" (destinations where the data interacts with external components, a lower layer such as the OS, etc.) and the effectiveness of this method is high.
-- item4
 
 ## Exploit
 
-- item1
-- item2
-- item3
-- item4
+Exploit: descrever que tipo de exploit é conhecido e que tipo de automação existe, e.g., no Metasploit (max 4 itens com 20 palavras cada)
+
+- OGNL Injection: The Confluence server receives a crafted OGNL expression that bypasses input validation, leading to the execution of arbitrary commands.
+- Privilege Escalation: By injecting malicious OGNL, attackers execute commands as the server, bypassing authentication and gaining elevated privileges.
+- Remote Code Execution: Attackers can remotely execute shell commands, potentially leading to full system control of the vulnerable Confluence server.
+- Lateral Movement: Once compromised, attackers can pivot within the internal network, exploiting the Confluence server to scan and target other systems.
+
 
 ## Ataques
 
+
+Ataques: descrever relatos de utilização desta vulnerabilidade para ataques bem sucedidos e/ou potencial para causar danos (max 4 itens com 20 palavras cada)
 - item1
 - item2
 - item3
