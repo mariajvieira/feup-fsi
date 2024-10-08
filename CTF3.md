@@ -1,6 +1,4 @@
-Week 3
-
-Wordpress version: 5.8.1
+## Week 3 - Wordpress version: 5.8.1
 
 ### Installed plugins and their versions:
 To find the installed plugins, we inspected the source code of the site.
@@ -48,6 +46,6 @@ CVE-2023-2732 is a critical vulnerability in the MStore API plugin for WordPress
  We found this vulnerability to be the most useful when logging as another user. After researching about it, we found an exploit, by entering "http://143.47.40.175:5001/wp-json/wp/v2/add-listing?id=1" we were able to log as the admin user. After finding the private post, we found the flag: flag{byebye} :)
 
 Sources:
-https://github.com/RandomRobbieBF/CVE-2023-2732?tab=readme-ov-file
-https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=wordpress+mstore
+- https://github.com/RandomRobbieBF/CVE-2023-2732?tab=readme-ov-file
+- https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=wordpress+mstore
 
