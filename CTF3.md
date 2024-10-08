@@ -3,7 +3,6 @@
 ### Wordpress version: 5.8.1
 
 ### Installed plugins and their versions:
-- Wordpress	5.8.1
 - MStore API 3.9.0
 - WooCommerce plugin 5.7.1
 - Booster for WooCommerce plugin 5.4.4
@@ -14,6 +13,9 @@
 - No additional users were found with the remaining ids we tested.
 
 ### Vulnerability research:
+
+##### Booster for WooCommerce plugin 5.4.4 : CVE-2021-34646
+Versions up to 5.4.3 of the Booster for WooCommerce plugin have an authentication bypass issue. Attackers can exploit weak token generation to impersonate users, including admins, if the Email Verification module is active.
 
 ##### Woocommerce5.7.1 : CVE-2020-36326
 WordPress versions 3.7 to 5.7.1 use a vulnerable version of the PHPMailer library, which has a PHP Object Injection vulnerability due to improper sanitization of user input before it is passed to the unserialize() function. This can allow remote attackers to inject and execute arbitrary code within the affected web server process.
@@ -38,7 +40,9 @@ CVE-2023-2732 is a critical vulnerability in the MStore API plugin for WordPress
  ##### Mstore-api 3.9.0 : CVE-2023-2732
  We found this vulnerability to be the most useful when logging as another user. After researching about it, we found an exploit, by entering "http://143.47.40.175:5001/wp-json/wp/v2/add-listing?id=1" we were able to log as the admin user. After finding the private post, we found the flag: flag{byebye} :)
 
-Sources:
+
+#### Sources:
 - https://github.com/RandomRobbieBF/CVE-2023-2732?tab=readme-ov-file
 - https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=wordpress+mstore
+- https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34646
 
