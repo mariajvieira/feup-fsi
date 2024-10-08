@@ -1,4 +1,6 @@
-## Week 3 - Wordpress version: 5.8.1
+## Week 3
+
+### Wordpress version: 5.8.1
 
 ### Installed plugins and their versions:
 To find the installed plugins, we inspected the source code of the site.
