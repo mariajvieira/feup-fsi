@@ -13,16 +13,15 @@ To find the installed plugins, we inspected the source code of the site.
 - No additional users were found with the remaining ids we tested.
 
 ### Vulnerability research:
+
 ##### Woocommerce5.7.1 : CVE-2020-36326
 WordPress versions 3.7 to 5.7.1 use a vulnerable version of the PHPMailer library, which has a PHP Object Injection vulnerability due to improper sanitization of user input before it is passed to the unserialize() function. This can allow remote attackers to inject and execute arbitrary code within the affected web server process.
 
-##### Mstore-api 1.0.0 : CVE-2023-3277
-Unauthorized account access via improper Apple login implementation, allowing unauthenticated attackers to log in as any user if they know the user's email address. This directly allows you to log in as another user.
+#### Mstore-api 1.0.0 : CVE-2023-2732
+CVE-2023-2732 is a critical vulnerability in the MStore API plugin for WordPress, allowing unauthenticated attackers to bypass authentication and impersonate users, including administrators. It has a severity score of 9.8/10. The issue is fixed in version 3.9.3​
 
-##### Mstore-api 1.0.0 : CVE-2023-2734
-Authentication bypass due to insufficient verification during cart sync from mobile API requests, allowing unauthenticated attackers to log in as any existing user if they have access to the user ID. This also enables you to log in as any user on the site.
+##### We found the above vulnerability the most relevant to our goal, but we also found the following in Mstore-api 1.0.0: 
 
-##### We also found this vulnerabilities in Mstore-api 1.0.0 : 
 - CVE-2024-8269
 - CVE-2024-8242
 - CVE-2024-7628
@@ -38,8 +37,17 @@ Authentication bypass due to insufficient verification during cart sync from mob
 - CVE-2023-3197
 - CVE-2023-3077
 - CVE-2023-3076
+- CVE-2023-2734
 - CVE-2023-2733
-- CVE-2023-2732
 - CVE-2021-24148
 - CVE-2020-36713
+ 
+ ### Chosen vulnerability and exploitation
+ 
+ ##### Mstore-api 1.0.0 : CVE-2023-2732
+ We found this vulnerability to be the most useful when logging as another user. After researching about it, we found an exploit, by entering "http://143.47.40.175:5001/wp-json/wp/v2/add-listing?id=1" we were able to log as the admin user. After finding the private post, we found the flag: flag{byebye} :)
+
+Sources:
+https://github.com/RandomRobbieBF/CVE-2023-2732?tab=readme-ov-file
+https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=wordpress+mstore
 
