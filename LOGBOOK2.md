@@ -15,7 +15,7 @@
 - Automated Static Analysis ---- ?
 
 
-## Exploits
+## Exploit
 
 Exploit: descrever que tipo de exploit é conhecido e que tipo de automação existe, e.g., no Metasploit (max 4 itens com 20 palavras cada)
 
@@ -25,7 +25,7 @@ Exploit: descrever que tipo de exploit é conhecido e que tipo de automação ex
 - Lateral Movement: Once compromised, attackers can pivot within the internal network, exploiting the Confluence server to scan and target other systems.
 
 
-## Attacks
+## Attack
 
 1. Persistent Access: Hackers used the vulnerability to install webshells, maintain control, and perform long-term exploitation on compromised servers.
 2. Data Dump: Attackers accessed the Confluence database, dumping user tables containing sensitive information such as usernames and emails.
