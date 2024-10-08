@@ -17,7 +17,7 @@ To find the installed plugins, we inspected the source code of the site.
 ##### Woocommerce5.7.1 : CVE-2020-36326
 WordPress versions 3.7 to 5.7.1 use a vulnerable version of the PHPMailer library, which has a PHP Object Injection vulnerability due to improper sanitization of user input before it is passed to the unserialize() function. This can allow remote attackers to inject and execute arbitrary code within the affected web server process.
 
-#### Mstore-api 1.0.0 : CVE-2023-2732
+##### Mstore-api 1.0.0 : CVE-2023-2732
 CVE-2023-2732 is a critical vulnerability in the MStore API plugin for WordPress, allowing unauthenticated attackers to bypass authentication and impersonate users, including administrators. It has a severity score of 9.8/10. The issue is fixed in version 3.9.3​
 
 ##### We found the above vulnerability the most relevant to our goal, but we also found the following in Mstore-api 1.0.0: 
