@@ -27,10 +27,10 @@ Exploit: descrever que tipo de exploit é conhecido e que tipo de automação ex
 
 ## Attacks
 
-1. Persistent Access: Hackers used the vulnerability to install webshells, maintain control, and perform long-term exploitation on compromised servers.
-2. Data Dump: Attackers accessed the Confluence database, dumping user tables containing sensitive information such as usernames and emails.
-3. Cryptomining: Exploited servers were used to install cryptomining malware, hijacking server resources for unauthorized cryptocurrency mining.
-4. Evasion: Hackers altered web access logs to remove evidence of their activities, hindering forensic analysis and detection.
+1. Hackers used the vulnerability to install webshells, maintain control, and perform long-term exploitation on compromised servers.
+2. Attackers accessed the Confluence database, dumping user tables containing sensitive information such as usernames and emails.
+3. Exploited servers were used to install cryptomining malware, hijacking server resources for unauthorized cryptocurrency mining.
+4. Hackers altered web access logs to remove evidence of their activities, hindering forensic analysis and detection.
 
 (Source:
 https://www.volexity.com/blog/2022/06/02/zero-day-exploitation-of-atlassian-confluence/
