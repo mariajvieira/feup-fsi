@@ -1,13 +1,13 @@
 
 # Trabalho realizado nas Semanas #2 e #3
 
-## Identificação 
+## Identification 
 
 - CVE-2022-26134 is a critical vulnerability in Atlassian Confluence Server and Data Center, where an Object-Graph Navigation Language (OGNL) injection allows an unauthenticated attacker to execute arbitrary code on a Confluence server or data center instance. 
 - This vulnerability impacts all versions of Confluence Server and Data Center before the following fixed versions 7.4.17, 7.13.7, 7.14.3, 7.15.2, 7.16.4, 7.17.4, 7.18.1, and newer.
 
 
-## Catalogação
+## Cataloging
 
 - This vulnerability was published in 02/06/2022 and the last modified date for it is 30/06/2022.
 - Discovered by Volexity after detecting exploitation in corporate environments.
@@ -15,7 +15,7 @@
 - Automated Static Analysis ---- ?
 
 
-## Exploit
+## Exploits
 
 Exploit: descrever que tipo de exploit é conhecido e que tipo de automação existe, e.g., no Metasploit (max 4 itens com 20 palavras cada)
 
@@ -25,8 +25,7 @@ Exploit: descrever que tipo de exploit é conhecido e que tipo de automação ex
 - Lateral Movement: Once compromised, attackers can pivot within the internal network, exploiting the Confluence server to scan and target other systems.
 
 
-## Ataques
-
+## Attacks
 
 1. Persistent Access: Hackers used the vulnerability to install webshells, maintain control, and perform long-term exploitation on compromised servers.
 2. Data Dump: Attackers accessed the Confluence database, dumping user tables containing sensitive information such as usernames and emails.
