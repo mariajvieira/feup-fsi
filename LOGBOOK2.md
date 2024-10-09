@@ -12,7 +12,6 @@
 - This vulnerability was published in 02/06/2022 and the last modified date for it is 30/06/2022.
 - Discovered by Volexity after detecting exploitation in corporate environments.
 - Severity level: 9.8 CRITICAL
-- Automated Static Analysis ---- ?
 
 
 ## Exploit
