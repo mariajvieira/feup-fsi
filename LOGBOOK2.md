@@ -16,12 +16,10 @@
 
 ## Exploit
 
-Exploit: descrever que tipo de exploit é conhecido e que tipo de automação existe, e.g., no Metasploit (max 4 itens com 20 palavras cada)
-
-- OGNL Injection: The Confluence server receives a crafted OGNL expression that bypasses input validation, leading to the execution of arbitrary commands.
-- Privilege Escalation: By injecting malicious OGNL, attackers execute commands as the server, bypassing authentication and gaining elevated privileges.
-- Remote Code Execution: Attackers can remotely execute shell commands, potentially leading to full system control of the vulnerable Confluence server.
-- Lateral Movement: Once compromised, attackers can pivot within the internal network, exploiting the Confluence server to scan and target other systems.
+- The OGNL injection vulnerability allows attackers to inject crafted OGNL expressions, bypassing validation and executing arbitrary commands on Confluence servers.
+- Attackers can gain privilege escalation by bypassing authentication and executing commands as the Confluence server, compromising system security.
+- This exploit enables remote code execution, allowing attackers to execute shell commands and potentially gain control of the vulnerable server.
+- Once compromised, attackers can perform lateral movement within the network, scanning and targeting other internal systems through the Confluence server.
 
 
 ## Attacks
