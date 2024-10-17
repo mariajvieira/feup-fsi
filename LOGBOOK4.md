@@ -67,3 +67,5 @@ $gcc task4.c -o task4
 $ ./task4
 ```
 - The ```system()``` function effectively passes all the environment variables from the parent process to the command it executes. Unlike ```execve()```, which directly replaces the process, ```system()``` runs a shell first, allowing it to inherit the environment variables.
+
+### Task 5
