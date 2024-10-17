@@ -76,11 +76,11 @@ $ ./task4
 extern char **environ;
 int main()
 {
-int i = 0;
-while (environ[i] != NULL) {
-printf("%s\n", environ[i]);
-i++;
-}
+    int i = 0;
+    while (environ[i] != NULL) {
+        printf("%s\n", environ[i]);
+        i++;
+    }
 }
 ```
 
