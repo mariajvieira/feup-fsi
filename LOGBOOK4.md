@@ -69,3 +69,29 @@ $ ./task4
 - The ```system()``` function effectively passes all the environment variables from the parent process to the command it executes. Unlike ```execve()```, which directly replaces the process, ```system()``` runs a shell first, allowing it to inherit the environment variables.
 
 ### Task 5
+- We created a new file ```foo``` with the following code:
+```
+#include <stdio.h>
+#include <stdlib.h>
+extern char **environ;
+int main()
+{
+int i = 0;
+while (environ[i] != NULL) {
+printf("%s\n", environ[i]);
+i++;
+}
+}
+```
+
+```
+$ gcc -o foo foo.c
+```
+"After running this comand, the file was compiled and an executable named foo was created."
+
+```
+$ sudo chown root foo
+$ sudo chmod 4755 foo
+```
+- The first command changes the owner of the executable foo to the root user, meaning the program is now owned by the superuser.
+- The second changes foo's file permissions and enables Set-UID. The chmod change mode command  sets the permissions to 4755, where 4 activates Set-UID, allowing the program to run with the file owner's (root's) privileges. The 755 grants the owner read, write, and execute rights, while others get read and execute rights. With Set-UID enabled, foo will run with root privileges, even when executed by a regular user.
