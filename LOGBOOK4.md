@@ -18,3 +18,10 @@ $
 ```
 
 ###  Task 2
+
+- We compiled the myprintenv.c program using the command
+```
+$ gcc myprintenv.c
+$ ./a.out > file
+```
+- After successful compilation, we executed the program and an executable file named a.out was created along with the output file named "file".
