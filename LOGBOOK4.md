@@ -19,7 +19,7 @@ $
 
 ###  Task 2
 
-- We compiled the myprintenv.c program using the command
+- We compiled the myprintenv.c program using the command:
 ```
 $ gcc myprintenv.c
 $ ./a.out > file
