@@ -153,7 +153,7 @@ In this case, we created malicious code whose execution would print a message:
 
 ### Task 8
 
-- First we started by compiling the file catall.c and made it a root-owned Set-UID program:
+- First we started by compiling the file ```catall.c``` and made it a root-owned Set-UID program:
 ```
 $ gcc catall.c -o catall
 $ sudo chown root catall
@@ -169,5 +169,5 @@ $ sudo chmod 400 /home/seed/Labsetup/secretfile.txt
 ```
 $ ./catall "; rm -rf /home/seed/Labsetup/secretfile.txt"
 ```
-To sum up, the use of system() in Set-UID programs is dangerous because it allows command injection and permission abuse. A best practice would be to replace system() with execve(), which does not invoke the shell and is therefore not vulnerable to this type of attack.
+To sum up, the use of ```system()``` in Set-UID programs is dangerous because it allows command injection and permission abuse. A best practice would be to replace ```system()``` with ```execve()``, which does not invoke the shell and is therefore not vulnerable to this type of attack.
 
