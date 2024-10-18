@@ -115,6 +115,21 @@ After running this comand, the file was compiled and an executable named ```task
 $ sudo chown root task6
 $ sudo chmod 4755 task6
 ```
+- We saved the malicious script to a file named ```ls.c```:
+```
+int main()
+{
+  echo("EXECUTING MALICIOUS SCRIPT as $(whoami)");
+  return 0;
+}
+```
+Then, we changed the ```PATH``` environment variable to make :
+```
+$ export PATH=/home/seed:$PATH
+```
+We ran the program ls that contains a call to ```system("ls")```. 
+However, since the program uses the relative path for the ls command instead of its absolute path, we can create an executable with the same name as the command ls but that executes a completely different instruction.
+In this case, we created malicious code whose execution would print a message.
 
 
 
