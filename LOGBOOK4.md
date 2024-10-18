@@ -104,6 +104,7 @@ $ export UNIVERSITY_NAME=Feup`
 
 - We ran the code after these export commands and this was the result:
 ![Image 1 - Task 5 overview.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task5.jpeg)
+*Image 1 - Task 5 overview.*
 
 - Checking the output, we conclude that variables like ```PATH``` and custom variables (```UNIVERSITY_NAME```) were inherited and modified by child processes, while environment variables like ```LD_LIBRARY_PATH``` and others may not be passed to child processes for security reasons, to prevent the execution of unintended libraries and protect the system from vulnerabilities.
 
@@ -148,3 +149,4 @@ Finally, we ran the task6 program. Since it calls ```system("ls")``` without spe
 In this case, we created malicious code whose execution would print a message:
 
 ![Image 2 - Task 6 overview.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task6.jpeg)
+*Image 2 - Task 6 overview.*
