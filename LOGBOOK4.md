@@ -169,5 +169,5 @@ $ sudo chmod 400 /home/seed/Labsetup/secretfile.txt
 ```
 $ ./catall "; rm -rf /home/seed/Labsetup/secretfile.txt"
 ```
-To sum up, the use of ```system()``` in Set-UID programs is dangerous because it allows command injection and permission abuse. A best practice would be to replace ```system()``` with ```execve()``, which does not invoke the shell and is therefore not vulnerable to this type of attack.
+To sum up, the use of ```system()``` in Set-UID programs is dangerous because it allows command injection and permission abuse. A best practice would be to replace ```system()``` with ```execve()```, which does not invoke the shell and is therefore not vulnerable to this type of attack.
 
