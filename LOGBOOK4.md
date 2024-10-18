@@ -101,6 +101,7 @@ $ export PATH=$PATH:/Documents/Labsetup
 $ export LD_LIBRARY_PATH=/Downloads
 $ export UNIVERSITY_NAME=Feup
 ```
+![](../Images/Task5.png) <br>
 
 
 ### Task 6
