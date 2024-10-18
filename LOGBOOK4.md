@@ -95,3 +95,27 @@ $ sudo chmod 4755 foo
 ```
 - The first command changes the owner of the executable foo to the root user, meaning the program is now owned by the superuser.
 - The second changes foo's file permissions and enables Set-UID. The chmod change mode command  sets the permissions to 4755, where 4 activates Set-UID, allowing the program to run with the file owner's (root's) privileges. The 755 grants the owner read, write, and execute rights, while others get read and execute rights. With Set-UID enabled, foo will run with root privileges, even when executed by a regular user.
+
+### Task 6
+
+- First, we created the new file ´´´task6.c´´´ :
+```
+int main()
+{
+  system("ls");
+  return 0;
+}
+```
+
+```
+$ gcc -o foo foo.c
+```
+After running this comand, the file was compiled and an executable named ´´´task6´´´ was created.
+
+```
+$ sudo chown root foo
+$ sudo chmod 4755 foo
+```
+
+
+
