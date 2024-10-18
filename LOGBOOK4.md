@@ -61,7 +61,7 @@ system("/usr/bin/env");
 return 0 ;
 }
 ```
-- Then we compiled and run that file:
+- Then we compiled and ran that file:
 ```
 $gcc task4.c -o task4
 $ ./task4
@@ -98,7 +98,7 @@ $ sudo chmod 4755 foo
 
 ### Task 6
 
-- First, we created the new file ´´´task6.c´´´ :
+- First, we created the new file ```task6.c``` with the following code:
 ```
 int main()
 {
@@ -106,16 +106,16 @@ int main()
   return 0;
 }
 ```
+- Then we compiled and ran that file:
+```
+$ gcc task6.c -o task6
+```
+After running this comand, the file was compiled and an executable named ```task6``` was created. Then we changed its owner to root and made it a Set-UID program.
+```
+$ sudo chown root task6
+$ sudo chmod 4755 task6
+```
 
-```
-$ gcc -o foo foo.c
-```
-After running this comand, the file was compiled and an executable named ´´´task6´´´ was created.
-
-```
-$ sudo chown root foo
-$ sudo chmod 4755 foo
-```
 
 
 
