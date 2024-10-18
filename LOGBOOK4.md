@@ -119,32 +119,31 @@ int main()
   return 0;
 }
 ```
-- Then we compiled and ran that file:
+- Then we compiled that file:
 ```
 $ gcc task6.c -o task6
 ```
-After running this comand, the file was compiled and an executable named ```task6``` was created. Then we changed its owner to root and made it a Set-UID program.
+- To escalate the privileges of our program, we changed its owner to root and set the Set-UID permission, allowing it to run with the privileges of the file owner (root):
 ```
 $ sudo chown root task6
 $ sudo chmod 4755 task6
 ```
-- We saved the malicious script to a file named ```ls.c```:
+- Next, we created a malicious C program named ```ls.c```. The goal of this program is to replace the behavior of the ls command when invoked by our task6 program.
 ```
 int main()
 {
-  echo("EXECUTING MALICIOUS SCRIPT as $(whoami)");
+  echo("EXECUTING MALICIOUS SCRIPT\n");
   return 0;
 }
 ```
-Then, we changed the ```PATH``` environment variable to make :
+And compiled it:
 ```
-$ export PATH=/home/seed:$PATH
+$ gcc ls.c -o ls
 ```
-We ran the program ls that contains a call to ```system("ls")```. 
-However, since the program uses the relative path for the ls command instead of its absolute path, we can create an executable with the same name as the command ls but that executes a completely different instruction.
-In this case, we created malicious code whose execution would print a message.
+To ensure our malicious program is executed instead of the original ls command, we modified the PATH environment variable:
+```
+$ export PATH=/home/seed/Desktop/Labsetup:$PATH
+```
+Finally, we ran the task6 program. Since it calls ```system("ls")``` without specifying an absolute path, it will find our malicious ls executable first, executing our code instead of the original ls command:
 
-
-
-
-
+![Descrição da Imagem](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task6.jpeg)
