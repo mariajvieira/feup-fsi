@@ -87,7 +87,7 @@ int main()
 ```
 $ gcc -o foo foo.c
 ```
-"After running this comand, the file was compiled and an executable named foo was created."
+After running this comand, the file was compiled and an executable named foo was created.
 
 ```
 $ sudo chown root foo
