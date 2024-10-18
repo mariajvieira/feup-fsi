@@ -102,6 +102,7 @@ $ export LD_LIBRARY_PATH=/Downloads
 $ export UNIVERSITY_NAME=Feup
 ```
 
+
 ### Task 6
 
 - First, we created the new file ```task6.c``` with the following code:
@@ -136,6 +137,7 @@ $ export PATH=/home/seed:$PATH
 We ran the program ls that contains a call to ```system("ls")```. 
 However, since the program uses the relative path for the ls command instead of its absolute path, we can create an executable with the same name as the command ls but that executes a completely different instruction.
 In this case, we created malicious code whose execution would print a message.
+
 
 
 
