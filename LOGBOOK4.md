@@ -99,9 +99,13 @@ $ sudo chmod 4755 foo
 ```
 $ export PATH=$PATH:/Documents/Labsetup
 $ export LD_LIBRARY_PATH=/Downloads
-$ export UNIVERSITY_NAME=Feup
+$ export UNIVERSITY_NAME=Feup`
 ```
+
+- We run the code after these export commands and this was the result:
 ![Descrição da Imagem](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task5.jpeg)
+
+Checking the output, we conclude that variables like ```PATH``` and custom variables (```UNIVERSITY_NAME```) were inherited by child processes, while environment variables like ```LD_LIBRARY_PATH``` and others may not be passed to child processes for security reasons, to prevent the execution of unintended libraries and protect the system from vulnerabilities.
 
 
 
