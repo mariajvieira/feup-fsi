@@ -101,7 +101,8 @@ $ export PATH=$PATH:/Documents/Labsetup
 $ export LD_LIBRARY_PATH=/Downloads
 $ export UNIVERSITY_NAME=Feup
 ```
-![](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/blob/main/Images/Task5.jpeg?ref_type=heads) 
+![Descrição da Imagem](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task5.jpeg)
+
 
 
 ### Task 6
