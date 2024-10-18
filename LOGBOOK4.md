@@ -144,6 +144,7 @@ To ensure our malicious program is executed instead of the original ls command, 
 ```
 $ export PATH=/home/seed/Desktop/Labsetup:$PATH
 ```
-Finally, we ran the task6 program. Since it calls ```system("ls")``` without specifying an absolute path, it will find our malicious ls executable first, executing our code instead of the original ls command:
+Finally, we ran the task6 program. Since it calls ```system("ls")``` without specifying an absolute path, it will find our malicious ls executable first, executing our code instead of the original ls command.
+In this case, we created malicious code whose execution would print a message:
 
 ![Descrição da Imagem](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task6.jpeg)
