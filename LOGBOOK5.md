@@ -1,7 +1,7 @@
 ## Buffer-Overflow Attack Lab - Set-UID Version
 
 
-- Primeiro, fizemos o setup do sistema:
+- Setup of the system:
 
 > $ sudo sysctl -w kernel.randomize_va_space=0
 
