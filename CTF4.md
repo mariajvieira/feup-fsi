@@ -1,13 +1,9 @@
 ## CTF Semana #4 (Environment Variables)
 
+After analyzing all installed software in the server, we noticed the following packages:
+- bash ("bash/trusty-updates,trusty-security,now 4.3-7ubuntu1.7 amd64 [installed]")
+- apache2 ("apache2/trusty-updates,trusty-security,now 2.4.7-1ubuntu4.22 amd64 [installed]")
 
-CVE-2021-44224
-CVE-2014-8109
-CVE-2014-3581
-CVE-2014-3523
-CVE-2014-0231
-CVE-2014-0226
-CVE-2014-0118
-CVE-2014-0117
-CVE-2014-0098
-CVE-2013-6438
+
+
+
