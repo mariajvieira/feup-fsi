@@ -1,5 +1,13 @@
 ## Buffer-Overflow Attack Lab - Set-UID Version
 
+
+- Primeiro, fizemos o setup do sistema:
+
+> $ sudo sysctl -w kernel.randomize_va_space=0
+
+> $ sudo ln -sf /bin/zsh /bin/sh
+
+
 ### Task 1
 
  - We compiled the ```call_shellcode.c```file and ran the -m32 version:
