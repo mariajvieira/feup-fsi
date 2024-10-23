@@ -30,6 +30,18 @@ The shell opened successfully in both.
 
 ### Task 2
 
+Before compiling the vulnerable program, we disabled the StackGuard and the
+non-executable stack protections and made it a root-owned Set-UID program.
+
+> $ gcc -DBUF_SIZE=100 -m32 -o stack -z execstack -fno-stack-protector stack.c
+
+> $ sudo chown root stack 
+
+> $ sudo chmod 4755 stack 
+
+
+
+
 
 
 
