@@ -40,8 +40,9 @@ non-executable stack protections and made it a root-owned Set-UID program.
 > $ sudo chmod 4755 stack 
 
 
+Next, we changed the value of the L1 variable acoording to our group number:
 
+![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task2LOGBOOK5.png)
 
-
-
+*Image 3 - L1 variable.*
 
