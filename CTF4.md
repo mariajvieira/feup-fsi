@@ -17,7 +17,13 @@ In summary, we can see how a misconfiguration or vulnerability in a widely used 
 After some search on the server, we noticed that there was a file named ```flag.txt```:
 
 ![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Image1CTF4.png)
+
 *Image 1 - Results of ```/var/```  command on the server.*
+
+![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Image2CTF4.png)
+
+*Image 1 - Results of ```/var/flag```  command on the server.*
+
 
 
 
