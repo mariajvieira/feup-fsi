@@ -57,9 +57,24 @@ To exploit the buffer-overflow vulnerability, we needed to know the distance bet
 After following the commands provided in the guide, we obtained the following output:
 
 ![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task3_LOGBOOK5_1.png)
+
 *Image 4*
 
 
 Next, we changed the file ```exploit.py```:
+![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task3_LOGBOOK5_2.png)
+
+*Image 5 - Exploit updated file*
+
+Explanation of the changes: 
+In the start, we placed the shellcode at the end of the buffer, ensuring enough space for the entire payload:
+> start = (517 - len(shellcode) - 1)
+
+This is the address of the buffer where the shellcode starts. It ensures that when the function returns, it jumps to our shellcode to execute it.
+> ret    = 0xffffca0c
+
+This calculates the distance between the base pointer (0xffffcaa8) and the buffer (0xffffca0c), telling us how far we need to go in the payload to overwrite the return address:
+> offset = 0xffffcaa8 - 0xffffca0c
+
 
 
