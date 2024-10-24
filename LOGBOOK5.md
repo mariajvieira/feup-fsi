@@ -56,6 +56,10 @@ To exploit the buffer-overflow vulnerability, we needed to know the distance bet
 
 After following the commands provided in the guide, we obtained the following output:
 
+![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/blob/main/Images/Task3_LOGBOOK5_1.png?ref_type=heads)
+*Image 4*
+
+
 Next, we changed the file ```exploit.py```:
 
 
