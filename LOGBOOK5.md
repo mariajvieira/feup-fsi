@@ -52,3 +52,10 @@ And ran ```make stack-L1``` successfully.
 
 ### Task 3
 
+To exploit the buffer-overflow vulnerability, we needed to know the distance between the buffer's start and the return address. Using GDB, we set a breakpoint in the vulnerable function and checked the base pointer (EBP) and buffer address. This allowed us to calculate the offsets needed to create a payload that overwrites the return address, letting our shellcode execute.
+
+After following the commands provided in the guide, we obtained the following output:
+
+Next, we changed the file ```exploit.py```:
+
+
