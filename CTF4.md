@@ -11,9 +11,13 @@ After analyzing all installed software in the server, we noticed the following p
 This vulnerability illustrates the critical interaction between environment variables and program execution in Linux systems.
 
 
-
 In summary, we can see how a misconfiguration or vulnerability in a widely used shell can lead to severe security breaches, not just in Bash itself but also in any service that relies on it, such as web servers like Apache.
 
+
+After some search on the server, we noticed that there was a file named ```flag.txt```:
+
+![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Image1CTF4.png)
+*Image 1 - Results of ```/var/```  command on the server.*
 
 
 
