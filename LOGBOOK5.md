@@ -99,12 +99,16 @@ with open('badfile', 'wb') as f:
 
 Explanation of the modifications: 
 
-> start = (517 - len(shellcode) - 1)
 Here, we placed the shellcode at the end of the buffer, to ensure there is enough space for the entire payload:
+
+> start = (517 - len(shellcode) - 1)
+
+By adding ```start``` to the buffer's base address, ```ret``` points to where the shellcode starts. This address will replace the return pointer so that when the function "returns" it jumps to our shellcode and runs it.
 
 > ret = 0xffffca0c + start 
 
-This calculates the distance between the base pointer (0xffffcaa8) and the buffer (0xffffca0c), telling us how far we need to go in the payload to overwrite the return address:
+This calculates the distance from the buffer’s start to the return address by moving 4 bytes from the saved base pointer (0xffffcaa8) to reach the return address, then subtracting the buffer start address (0xffffca0c).This offset lets us place our ```ret``` address at the right point in the payload to redirect execution to our shellcode.
+
 > offset = 0xffffcaa8 + 4 - 0xffffca0c 
 
 Finally we obtained the expected result and the attack was successfully done:
