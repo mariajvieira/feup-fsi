@@ -77,9 +77,9 @@ CWE-134, known as "Use of Externally-Controlled Format String," addresses vulner
 
 Nonetheless, the nature of certain attacks can vary based on whether the format string is allocated on the stack or the heap:
 
-Task 2.A (Stack Data): This method depends on the stack layout allowing direct access to the function's arguments or local variables. If the format string is stored on the heap, the attacker loses some control over the stack frame, complicating the ability to print stack data effectively.
+- Task 2.A (Stack Data): This method depends on the stack layout allowing direct access to the function's arguments or local variables. If the format string is stored on the heap, the attacker loses some control over the stack frame, complicating the ability to print stack data effectively.
 
-Task 3 (Modifying the Server Program’s Memory): This attack involves manipulating the stack and controlling the return address. When the format string is located on the heap, the techniques for stack manipulation discussed in Task 3 might not function properly. In this case, the target variable’s address remains fixed, and the format string does not directly affect the stack layout.
+- Task 3 (Modifying the Server Program’s Memory): This attack involves manipulating the stack and controlling the return address. When the format string is located on the heap, the techniques for stack manipulation discussed in Task 3 might not function properly. In this case, the target variable’s address remains fixed, and the format string does not directly affect the stack layout.
 
 While vulnerabilities linked to format strings can occur with those allocated in the heap, many specific exploitation techniques (especially those targeting the stack) are less effective or may not work at all if the format string is stored in heap memory. The stack offers a more predictable environment for these types of attacks compared to heap allocations. 
 
