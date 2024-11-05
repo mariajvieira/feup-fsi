@@ -35,6 +35,7 @@ After some tries, we noticed only %n and %s crash the program:
 ## Task 2
 
 ### Task 2.A
+
 To print out the data on the stack, we use the values ```ABCD``` which the ascii code is ```41424344```. 
 
 ![Image 8.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task2_LOGBOOK6.png)
@@ -61,3 +62,10 @@ After finding the address of the secret message on the server printout ```0x080e
 Similar to the previous example, we used printf followed by the converted address and then  63 ```%x``` specifiers until we reached the correct position of the address. Finally we added ```%n``` in order to change the content of the target variable. We changed it to the number of characters written to that moment.
 ![Image 11.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task3_LOGBOOK6.png)
 ![Image 12.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task3_LOGBOOK6_img2.png)
+
+### Task 3.B 
+
+To change the value of a target variable to ```0x5000```, which the previous value was ```0xee```,we started by converting the new value to decimal: ```20480```. Then, because we used 63 ```%x``` specifiers -4 to account for the bytes used by the address: ```(63-4)*4```(only 4 bytes per address because of the 32-bit environment) we subtracted that value ```20480 - (63-4)*4 = 20244```.
+
+After that, we used the following command to change the value of the target variable:
+
