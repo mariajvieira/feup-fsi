@@ -30,7 +30,11 @@ After some tries, we noticed only %n and %s crash the program:
 ![Image 7.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Using%25s.png)
 
 
-## Task2
+## Task 2
 
+To print out the data on the stack, we use the values ´´´ABCD´´´ which the ascii code is ´´´41424344´´´. 
 
+![Image 8.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task2_LOGBOOK6.png)
 
+Considering the values are reversed, we can see the value ´´´44434241´´´ that represents the adress of ABCD.
+After testing, we concluded that we needed 63 %x format specifiers so that the server program could print out the first four bytes of the input.
