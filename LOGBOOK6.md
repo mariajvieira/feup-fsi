@@ -65,7 +65,8 @@ Similar to the previous example, we used printf followed by the converted addres
 
 ### Task 3.B 
 
-To change the value of a target variable to ```0x5000```, which the previous value was ```0xee```,we started by converting the new value to decimal: ```20480```. Then, because we used 63 ```%x``` specifiers -4 to account for the bytes used by the address: ```(63-4)*4```(only 4 bytes per address because of the 32-bit environment) we subtracted that value ```20480 - (63-4)*4 = 20244```.
-
+To change the value of a target variable to ```0x5000```, which the previous value was ```0xee```,we started by converting the new value to decimal: ```20480```. Then, because we used 63 ```%x``` specifiers -4 to account for the bytes used by the address: ```(63-4)*4```(multiplied by 4: 4 bytes due to the 32-bit environment) we subtracted that value ```20480 - (63-4)*4 = 20244```.
 After that, we used the following command to change the value of the target variable:
+![Image 13.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task3_LOGBOOK6_img3.png)
+![Image 14.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task3_LOGBOOK6_img4.png)
 
