@@ -30,4 +30,7 @@ After some tries, we noticed only %n and %s crash the program:
 ![Image 7.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Using%25s.png)
 
 
+## Task2
+
+
 
