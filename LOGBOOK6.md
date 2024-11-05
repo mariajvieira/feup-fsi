@@ -11,5 +11,13 @@ Then, we compiled and installed the program.
 
 ## Task 1
 
+After running the containers, we ran the following command:
+> $ echo hello | nc 10.9.0.5 9090
+
+We successfuly printed out ```hello```.
+![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task1_LOGBOOK6.png)
+
+
+
 
 
