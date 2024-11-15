@@ -22,3 +22,12 @@ After analyzing the source code, we were able to answer the questions:
    This line uses user input directly in ```printf``` without specifying a format. This can be exploited to:
    - Leak memory addresses: Using format specifiers like ```%x``` or `%s`, an attacker can read values from the stack, potentially revealing addresses of variables or functions.
    - Arbitrary Memory Write: By using format specifiers like ```%n```, the attacker can write arbitrary values to specific memory addresses. This can be used to overwrite the function pointer ```fun``` to point to ```readtxt``` with a custom filename (e.g., ```flag```) instead of ```rules```, thereby making the program read ```flag.txt``` to reveal the flag.
+
+First, we discovered the address of the readtxtfuncion using gdb:
+![Image 2.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF6_2.png)
+The address of readtxt was found to be 0x80497a5.
+
+
+￼
+￼
+
