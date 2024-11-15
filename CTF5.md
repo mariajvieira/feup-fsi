@@ -17,3 +17,21 @@ The buffer overflow vulnerability allows overwriting the fun pointer to redirect
 
 Yes, there is a buffer overflow. The array buffer has only 32 bytes, but ```scanf("%45s", &buffer)```; allows reading up to 45 bytes, causing an overflow and enabling the overwriting of fun. 
 With this vulnerability, we can overwrite the fun pointer to redirect the function call back to readtxt, and modify the value in buffer to ```"flag"```, so that ```readtxt``` will attempt to open ```flag.txt``` instead of ```rules.txt```.
+
+### Attack
+To exploit the vulnerability, we needed to mpdify the ``èxploit-template.py``` payload.
+
+foto do inicial
+
+In order to do that, we need to overwrite the function pointer fun to point back to the readtxt function and provide the argument "flag" to readtxt, so it constructs the command ```cat flag.txt```.
+
+First, we discovered the address of the ```readtxt```funcion using gdb:
+
+foto 1
+
+Then we started constructing the payload, by adding "flag" and a specific number of characters 'A' and the readtxt adddress.
+After many tries, we realized we needed to put the termination character after "flag" (\x00) and 27 'A' characters before the readtxt address.
+foto 2
+
+After running the program with the corret payload, we finally discovered the flag :
+foto flag
