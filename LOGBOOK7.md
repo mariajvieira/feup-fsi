@@ -45,7 +45,7 @@ window.onload = function () {
 }
 </script>
 ```
-We changed the ```Brief description```to that code:
+We logged as ```samy``` and  changed the ```Brief description```to that code:
 
 ![Image 9.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/task4_logbook7_1.png)
 
