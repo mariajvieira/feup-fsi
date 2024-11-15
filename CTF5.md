@@ -32,8 +32,8 @@ First, we discovered the address of the ```readtxt```funcion using gdb:
 Then we started constructing the payload, by adding "flag" and a specific number of characters 'A' and the readtxt adddress.
 After many tries, we realized we needed to put the termination character after "flag" (\x00) and 27 'A' characters before the readtxt address.
 
-![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF5_img12.png)
+![Image 2.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF5_img2.png)
 
 After running the program with the corret payload, we finally discovered the flag :
 
-![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF5_flag.png)
+![Image 3.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF5_flag.png)
