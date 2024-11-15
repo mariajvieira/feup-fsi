@@ -28,7 +28,21 @@ First, we discovered the address of the readtxtfuncion using gdb:
 
 The address of readtxt was found to be 0x80497a5.
 
+![Image 3.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF6_3.png)
 
-￼
-￼
+Certainly! Here's the explanation rewritten in a continuous text format:
+
+---
+
+First, we started by connecting to the remote server, which allowed us to interact with the vulnerable program. Upon connecting, the program displayed some initial output, prompting us for input with the text "flag:". We captured this output to analyze it further.
+
+The program provided a hint by printing the address of a function pointer named `fun`. We extracted this hint using string manipulation techniques to obtain the exact memory address. This address was critical because it pointed to the function we intended to overwrite. Additionally, through `gdb` analysis, we discovered the address of the ```readtxt``` function, which was ```0x80497a5```. Our goal was to overwrite the existing function pointer ```fun``` with this address so that we could force the program to read from ```flag.txt``` instead of its default ```rules.txt``` file.
+
+Next, we identified a format string vulnerability in the program. This vulnerability allowed us to write arbitrary values to specific memory addresses. By leveraging this flaw, we could overwrite the function pointer ```fun``` with the address of the ```readtxt``` function, causing the program to execute our desired command.
+
+To craft our exploit, we prepared a prefix that would replace the default filename (using something like "flagnn" to hint at ```flag.txt```). We then used an automated technique to generate a format string payload. This payload was carefully constructed to write the address of ```readtxt``` into the location pointed to by the `fun` address. The exploit took into account the stack offset to ensure our input aligned correctly.
+
+Once our payload was ready, we sent it to the program. If the exploit was successful, it would change the function pointer to point to ```readtxt```, with "flag" as the argument. This would make the program execute a command equivalent to reading `flag.txt`, ultimately revealing the hidden flag in the program’s output.
+
+In summary, the exploit process involved extracting the function pointer address, finding the address of ```readtxt```, crafting a payload to exploit the format string vulnerability, and sending this payload to change the program’s behavior, thus obtaining the flag.
 
