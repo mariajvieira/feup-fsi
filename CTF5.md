@@ -28,7 +28,10 @@ First, we discovered the address of the ```readtxt```funcion using gdb:
 The address of readtxt was found to be 0x80497a5.
 
 Then we started constructing the payload, by adding "flag" and a specific number of characters 'A' and the readtxt adddress.
-After many tries and errors, we realized we needed to put the termination character after "flag" (\x00) and 27 'A' characters, since "flag" already occupies 4 bytes, before the readtxt address.
+After many tries and errors, we realized we needed to put the null terminator after "flag" (\x00) and 27 'A' characters.
+
+#### Why 27 'A's?
+The buffer in the program has a size of 32 bytes, but the scanf function allows up to 45 bytes to be read into it, causing a buffer overflow. To exploit this, we need to overwrite the function pointer (fun), which is located right after the buffer in memory. To do this, we first send the controlled string "flag\x00", which occupies 5 bytes (4 for "flag" and 1 for the null terminator). After this string, we need to fill the remaining space in the buffer with 27 'A' characters, ensuring that the overflow will reach the function pointer and overwrite it correctly. 
 
 ![Image 2.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF5_img2.png)
 
