@@ -1,4 +1,4 @@
-## CTF Semana #5 (Buffer Overflow)
+## CTF Week #5 (Buffer Overflow)
 
 First, we verified that the program's security features were as expected by running the following command:
 > $ checksec program
