@@ -25,6 +25,7 @@ After analyzing the source code, we were able to answer the questions:
 
 First, we discovered the address of the readtxtfuncion using gdb:
 ![Image 2.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF6_2.png)
+
 The address of readtxt was found to be 0x80497a5.
 
 
