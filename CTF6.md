@@ -1,4 +1,24 @@
 ### CTF Week #6 (Format Strings)
 
 
+After running the ```checksec``` command, we obtained the following output:
+
 ![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF6_1.png)
+
+We concluded that the only protection enabled in the binary is the stack canary, which helps prevent basic stack-based buffer overflow attacks by detecting stack corruption before the function returns. However, the binary lacks other critical protections like RELRO, PIE, and NX, making it vulnerable to several types of exploits.
+
+Possible attacks include format string vulnerabilities, which can be used to read or write arbitrary memory addresses, potentially leading to control flow hijacking. Additionally, due to the absence of RELRO, attackers can perform GOT overwrite attacks, redirecting function calls to malicious code. The lack of PIE allows for predictable addresses, enabling Return-to-libc attacks. Finally, since the stack is executable, shellcode injection is also feasible.
+
+After analyzing the source code, we were able to answer the questions:
+
+#### Is there any file that is opened and read by the program?
+   Yes, the program reads a file using the ```readtxt``` function. Specifically, it constructs a command using ```sprintf``` to read a file with the ```.txt``` extension. By default, the program reads a file called ```rules.txt```.
+
+#### Is there any way to control the file that is opened?
+   Yes, the filename can be controlled indirectly. The function pointer ```fun``` is initially set to point to ```readtxt``` and it is used to read ```rules.txt```. However, by exploiting the format string vulnerability present in the ```printf(buffer)``` statement, it may be possible to overwrite the function pointer ```fun``` to change its behavior. This means you could potentially alter the filename being read by pointing ```fun``` to read a different file like ```flag.txt```.
+
+#### Is there a format string vulnerability? If so, what is it vulnerable to and what can you do with it?
+   Yes, there is a format string vulnerability in this line:```printf(buffer);```
+   This line uses user input directly in ```printf``` without specifying a format. This can be exploited to:
+   - Leak memory addresses: Using format specifiers like ```%x``` or `%s`, an attacker can read values from the stack, potentially revealing addresses of variables or functions.
+   - Arbitrary Memory Write: By using format specifiers like ```%n```, the attacker can write arbitrary values to specific memory addresses. This can be used to overwrite the function pointer ```fun``` to point to ```readtxt``` with a custom filename (e.g., ```flag```) instead of ```rules```, thereby making the program read ```flag.txt``` to reveal the flag.
