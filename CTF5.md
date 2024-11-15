@@ -9,7 +9,9 @@ After analyzing the source code of the program, we were able to answer the quest
 Yes, the program tries to open and read the file ```rules.txt```. This happens in the ```readtxt``` function, where the command ```cat rules.txt``` is constructed and executed using the system function.
 
 #### Is there a way to control the file that is opened?
-Yes, there is an indirect way to control the file that is opened. In the main function, there is a buffer overflow vulnerability in ```scanf```, which allows overwriting the ```fun``` pointer. By redirecting ```fun``` to ```readtxt``` and modifying the string in buffer to ```"flag"```, the program will attempt to open ```flag.txt``` instead of ```rules.txt```.
+Yes, there is an indirect way to control the file that will be opened. This can be achieved by exploiting the buffer overflow vulnerability present in the program.
+In the main function, the function pointer ```fun``` initially points to ```readtxt```, but it is later overwritten to point to ```echo```.
+The buffer overflow vulnerability allows overwriting the fun pointer to redirect it back to ```readtxt``` and pass a controlled string argument. This causes the program to construct the command ```cat flag.txt```, opening the ```flag.txt``` file instead.
 
 #### Is there a buffer overflow? If yes, what can you do?
 
