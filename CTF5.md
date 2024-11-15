@@ -27,11 +27,13 @@ In order to do that, we need to overwrite the function pointer fun to point back
 
 First, we discovered the address of the ```readtxt```funcion using gdb:
 
-foto 1
+![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF5_img1.png)
 
 Then we started constructing the payload, by adding "flag" and a specific number of characters 'A' and the readtxt adddress.
 After many tries, we realized we needed to put the termination character after "flag" (\x00) and 27 'A' characters before the readtxt address.
-foto 2
+
+![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF5_img12.png)
 
 After running the program with the corret payload, we finally discovered the flag :
-foto flag
+
+![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF5_flag.png)
