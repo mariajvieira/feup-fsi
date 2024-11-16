@@ -29,6 +29,7 @@ To exploit the vulnerability, we started by analizing the source code.
 
 The program provided a hint by printing the address of a function pointer named ```fun```. We extracted this hint using string manipulation techniques to obtain the exact memory address. This address was critical because it pointed to the function we intended to overwrite.
 We discovered the address of the ```readtxt``` funcion using gdb:
+
 ![Image 2.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF6_2.png)
 
 The address of readtxt was found to be ```0x80497a5```.
@@ -37,14 +38,20 @@ Our goal was to overwrite the existing function pointer ```fun``` with this addr
 
 Next, we tried to overwrite the function pointer ```fun``` with the address of the ```readtxt``` function, to cause the program to execute our desired command.
 
-To craft our exploit, we prepared a prefix that would replace the default filename (using something like "flagnn" to hint at ```flag.txt```). We then used an automated technique to generate a format string payload. This payload was carefully constructed to write the address of ```readtxt``` into the location pointed to by the `fun` address. The exploit took into account the stack offset to ensure our input aligned correctly.
-
-Once our payload was ready, we sent it to the program. If the exploit was successful, it would change the function pointer to point to ```readtxt```, with "flag" as the argument. This would make the program execute a command equivalent to reading `flag.txt`, ultimately revealing the hidden flag in the program’s output.
-
-In summary, the exploit process involved extracting the function pointer address, finding the address of ```readtxt```, crafting a payload to exploit the format string vulnerability, and sending this payload to change the program’s behavior, thus obtaining the flag.
+To craft our exploit, we prepared a prefix that would replace the default filename (using something like "flaggg" to hint at ```flag.txt```). We generated a format string payload. This payload was carefully constructed to write the address of ```readtxt``` into the location pointed to by the ```fun``` address. The exploit took into account the stack offset to ensure our input aligned correctly.
 
 ![Image 3.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF6_3.png)
 
+Once our payload was ready, we sent it to the program.The function pointer was changed to point to ```readtxt```, with "flag" as the argument. This made the program execute a command equivalent to reading `flag.txt`, revealing the hidden flag in the program’s output - ```flag{L34k1ng_Fl4g_0ff_Th3_St4ck_44789C2D}```. 
+
 ![Image 4.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF6_4.png)
+
+In summary, the vulnerability allowed us to overwrite a function pointer and redirect the program to read from a different file, revealing the hidden flag. This exploit highlights the danger of format string vulnerabilities in programs with inadequate security protections.
+
+
+
+
+
+
 
 
