@@ -46,3 +46,6 @@ Once our payload was ready, we sent it to the program. If the exploit was succes
 
 In summary, the exploit process involved extracting the function pointer address, finding the address of ```readtxt```, crafting a payload to exploit the format string vulnerability, and sending this payload to change the program’s behavior, thus obtaining the flag.
 
+![Image 4.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF6_4.png)
+
+
