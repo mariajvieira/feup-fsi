@@ -1,4 +1,4 @@
-## Secret Key Encryption
+## Secret Key Encryption Lab
 
 #### Task 1
 
