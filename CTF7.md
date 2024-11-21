@@ -22,5 +22,12 @@ As the site is a Copyparty, we did some research on vulnerabilities commonly ass
 
 This way, we can see that this website is vulnerable, and we can use this exploit to get to the flag.
 
+![Image 3](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF7_img3.png)
+
+
 
 ##### What type of XSS vulnerability (Reflected, Stored, or DOM) allowed you to access the flag?
+
+This vulnerability occurs when user-supplied input, such as a query parameter in a URL, is immediately reflected back by the server into the HTTP response without proper validation or sanitization. In this case, the server reflected the injected payload directly into the response, where it was executed in the browser.
+
+By crafting a malicious URL with a payload (```/?k304=y%0D%0A%0D%0A%3Cimg+src%3Dcopyparty+onerror%3Dalert(1)%3E```), we exploited this flaw to execute JavaScript in the browser. This allowed access to the flag.txt file by making a request within the context of the browser session, which had the required permissions to access the flag.
