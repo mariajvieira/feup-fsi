@@ -4,7 +4,8 @@
 ##### Find the file related to the flag on the server. Why can't you directly access the secret flag?
 
 When trying to access the flag.txt file, it shows the following error:
-[Image 1](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/blob/main/Images/CTF7_img1.png)
+
+[Image 1](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF7_img1.png)
 
 We cannot directly access the flag because the server is configured to block unauthorized or direct requests to the flag.txt file. It enforces restrictions based on context, such as validating headers, cookies, or the origin of the request. This means the file is protected against simple HTTP GET requests and can only be accessed through interactions that occur within the browser, such as JavaScript execution in the context of an authenticated or authorized session.
 
