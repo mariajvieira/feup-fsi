@@ -31,6 +31,7 @@ We obtained the flag successfuly!!
 
 ![Image 4](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF7_img4.png)
 
+
 ##### What type of XSS vulnerability (Reflected, Stored, or DOM) allowed you to access the flag?
 
 This vulnerability occurs when user-supplied input, such as a query parameter in a URL, is immediately reflected back by the server into the HTTP response without proper validation or sanitization. In this case, the server reflected the injected payload directly into the response, where it was executed in the browser.
