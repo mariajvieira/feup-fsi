@@ -7,8 +7,8 @@
 
 Finding out plain text:
 
-[11/26/24]seed@VM:~/.../Files$  tr ’ytnvupxmqiehsbzdaclrgfjk’ ’THEANDOISLPRKFUYCMWGBVQX’ < ciphertext.txt > substituted.txt
-[11/26/24]seed@VM:~/.../Files$ 
+$  tr ’ytnvupxmqiehsbzdaclrgfjk’ ’THEANDOISLPRKFUYCMWGBVQX’ < ciphertext.txt > substituted.txt
+
 
 
 
