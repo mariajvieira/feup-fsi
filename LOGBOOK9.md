@@ -5,9 +5,14 @@
 First, we tested the encryption:
 After creating a ```plain.txt``` file with the phrase ```O objetivo do trabalho esta semana é abordar temáticas relacionadas com criptografia simétrica```, we ran the command:
 
-- $ tr ’abcdefghijklmnopqrstuvwxyz’ ’sxtrwinqbedpvgkfmalhyuojzc’ < plain.txt > ciphertext.txt
+> $ tr ’abcdefghijklmnopqrstuvwxyz’ ’sxtrwinqbedpvgkfmalhyuojzc’ < plain.txt > ciphertext.txt
 
 And the result was : ```O kxewhbuk rk hasxspqk wlhs lwvsgs é sxkarsa hwváhbtsl awpstbkgsrsl tkv tabfhknasibs lbvéhabts```.
+
+
+
+Finding out plain text:
+
 
 #### Task 2
 
