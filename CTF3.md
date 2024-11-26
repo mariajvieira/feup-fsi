@@ -1,4 +1,4 @@
-## Week 3
+## CTF Week 3 (Wordpress CVE)
 
 ### Wordpress version: 5.8.1
 
