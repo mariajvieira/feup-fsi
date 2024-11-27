@@ -10,7 +10,7 @@ After that, we did some research to find any vulnerabilities in that version and
 -- NOT SQL INJECTION ATTACK
 
 
-After some research in the website, we founf the comment: 
+After some research in the website, we found the comment: 
 
 ![Image 2](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF8_img2.png)
 
