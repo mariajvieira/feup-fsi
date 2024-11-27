@@ -6,5 +6,5 @@ By exploring the website, using the developer tools, we obtained:
 
 We discovered that the website has the wordpress version 6.7.1.
 
-After that, we did some research to find anyy vulnerabilities in that version.
+After that, we did some research to find any vulnerabilities in that version and found ```CVE-2023-4239```.
 
