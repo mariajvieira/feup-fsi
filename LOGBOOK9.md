@@ -100,8 +100,105 @@ EARNING BEST DIRECTOR NOMINATIONS ARE FEW AND FAR BETWEEN
 
 #### Task 2
 
-- When encrypting, which flags did you need to specify? What is the difference between these different modes?
+In this task, we encrypted and decrypted the file plaintext.txt using three different AES modes: AES-128-ECB, AES-128-CBC, and AES-128-CTR.
+ ##### 1. Encrypting the File
+ ###### AES-128-ECB
+ 
+ We used the command:
 
-- When decrypting, which flags did you need to specify? What is the main difference between AES-128-CTR and the other modes?
+ ```openssl enc -aes-128-ecb -e -in plaintext.txt -out cipher_ecb.bin -K 00112233445566778889aabbccddeeff ```
 
+- ```-aes-128-ecb``` : Specifies the cipher mode as ECB.
+- ```-e``` : Indicates encryption.
+- ```-in plaintext.txt``` : The input file to be encrypted.
+- ```-out cipher_ecb.bin``` : The output encrypted file.
+- ```-K``` : Provides the encryption key in hexadecimal format. A 128-bit key is required for AES-128.
+
+###### AES-128-CBC
+
+ We used the command:
+ 
+ ```openssl enc -aes-128-cbc -e -in plaintext.txt -out cipher_cbc.bin -K 00112233445566778889aabbccddeeff -iv 0102030405060708```
+ - Same as ECB mode, but with an additional ```-iv``` parameter to specify the initialization vector (IV). The IV introduces randomness to ensure identical plaintext blocks result in different ciphertext blocks.
+
+###### AES-128-CTR
+
+We used the command:
+
+```openssl enc -aes-128-ctr -e -in plaintext.txt -out cipher_ctr.bin -K 00112233445566778889aabbccddeeff -iv 0102030405060708```
+- Similar to CBC mode, CTR also requires an IV. In CTR, the IV serves as a nonce and is incremented for each block to generate a unique counter.
+
+##### 2. Decrypting the File
+
+ 
+###### AES-128-ECB
+ 
+ We used the command:
+
+ ```openssl enc -aes-128-ecb -d -in cipher_ecb.bin -out decrypted_ecb.txt -K 00112233445566778889aabbccddeeff```
+
+- ```-d``` : Specifies decryption.
+- The rest of the parameters remain the same as in the encryption step.128-bit key is required for AES-128.
+
+###### AES-128-CBC
+
+ We used the command:
+ 
+ ```openssl enc -aes-128-cbc -d -in cipher_cbc.bin -out decrypted_cbc.txt -K 00112233445566778889aabbccddeeff -iv 0102030405060708```
+ - The IV, ```-iv```, is necessary for decryption to correctly reverse the chaining process used in encryption.
+
+###### AES-128-CTR
+
+We used the command:
+
+```openssl enc -aes-128-ctr -d -in cipher_ctr.bin -out decrypted_ctr.txt -K 00112233445566778889aabbccddeeff -iv 0102030405060708```
+- The same IV used for encryption is required for decryption to ensure correct counter synchronization.
+
+ ##### When encrypting, which flags did you need to specify? What is the difference between these different modes?
+###### Flags Required for Encryption:
+
+- ```-K``` : Specifies the encryption key in hexadecimal format (32 characters for AES-128).
+- ```-e``` : Indicates encryption.
+- ```-in``` : Specifies the input plaintext file to encrypt.
+- ```-out``` : Specifies the output file to store the ciphertext.
+- ```-iv``` (for CBC and CTR): Specifies the initialization vector (IV) in hexadecimal format (16 characters).
+
+###### Differences Between Modes:
+
+- AES-128-ECB:
+
+Encrypts blocks independently.
+Does not require an IV, making it simpler but vulnerable to pattern detection.
+- AES-128-CBC:
+
+Uses an IV to chain encryption across blocks, eliminating plaintext patterns.
+Requires synchronization of the IV for both encryption and decryption.
+
+- AES-128-CTR:
+
+Converts the block cipher into a stream cipher by combining a counter (derived from IV) with the plaintext.
+Allows random access to encrypted data and supports parallel processing.
+
+
+ ##### When decrypting, which flags did you need to specify? What is the main difference between AES-128-CTR and the other modes?
+
+###### Flags Required for Decryption:
+
+- ```-K``` : Specifies the decryption key in hexadecimal format.
+- ```-d``` : Indicates decryption.
+- ```-in``` : Specifies the input ciphertext file.
+- ```-out``` : Specifies the output file to store the decrypted plaintext.
+- ```-iv``` (for CBC and CTR): The same IV used for encryption must be provided to reverse the process correctly.
+
+###### Main Difference Between AES-128-CTR and the Other Modes:
+
+- Error Handling:
+
+In CTR mode, decryption errors caused by corrupted ciphertext affect only the corresponding block (byte-level independence). This is because CTR does not use chaining between blocks.
+In CBC mode, a single corrupted block causes errors in that block and all subsequent blocks, as decryption relies on the chaining process.
+
+- Parallel Processing:
+
+CTR allows independent decryption of blocks, supporting parallelism.
+ECB and CBC require sequential processing.
 #### Task 5
