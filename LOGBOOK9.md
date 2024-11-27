@@ -100,7 +100,8 @@ EARNING BEST DIRECTOR NOMINATIONS ARE FEW AND FAR BETWEEN
 
 #### Task 2
 
-In this task, we encrypted and decrypted the file plaintext.txt using three different AES modes: AES-128-ECB, AES-128-CBC, and AES-128-CTR.
+In this task, we created a file: ```plaintext.txt``` and we encrypted and decrypted it using three different AES modes: AES-128-ECB, AES-128-CBC, and AES-128-CTR.
+
  ##### 1. Encrypting the File
  ###### AES-128-ECB
  
