@@ -205,13 +205,26 @@ ECB and CBC require sequential processing.
 
 
 #### Task 5
-We started by modifing the byte ```0x12C```(300 in decimal because our group number is the 6 so the byte that had to be changed was the 50*6=300).
-(IMAGEM)
 
-And we changed to ```FF```:
-(IMAGEM)
+###### AES-128-ECB
 
- ###### AES-128-ECB
- 
+We started by modifing the byte at offset ```0x12C```(300 in decimal as our group number is the 6 so the byte that had to be changed was the 50*6=300).
+
+We identified the byte that needed to be changed:
+![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task5_LOGBOOK9_1.png)
+
+Next, we changed the byte to ```FF```:
+![Image 2.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task5_LOGBOOK9_2.png)
 
 
+Finally we used the ```diff```command to compare the original and modified decrypted texts. These were the results:
+![Image 3.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task5_LOGBOOK9_3.png)
+
+From this, we concluded that the corruption of a single byte in the ciphertext resulted in the loss of 15 bytes of information in the decrypted text.
+
+This behavior matches the expected result in ECB mode, where each block of ciphertext is decrypted independently. Therefore, a corruption in one byte only affects the corresponding byte in the decrypted plaintext. In our case, the corrupted byte impacted 15 bytes of the plaintext, likely due to the padding or block cipher structure.
+
+###### AES-128-CBC
+
+
+###### AES-128-CTR
