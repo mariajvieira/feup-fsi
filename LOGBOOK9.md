@@ -155,7 +155,7 @@ We used the command:
 ```openssl enc -aes-128-ctr -d -in cipher_ctr.bin -out decrypted_ctr.txt -K 00112233445566778889aabbccddeeff -iv 0102030405060708```
 - The same IV used for encryption is required for decryption to ensure correct counter synchronization.
 
- ##### When encrypting, which flags did you need to specify? What is the difference between these different modes?
+ ##### "When encrypting, which flags did you need to specify? What is the difference between these different modes?"
 ###### Flags Required for Encryption:
 
 - ```-K``` : Specifies the encryption key in hexadecimal format (32 characters for AES-128).
