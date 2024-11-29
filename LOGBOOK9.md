@@ -211,18 +211,21 @@ ECB and CBC require sequential processing.
 We started by modifing the byte at offset ```0x12C```(300 in decimal as our group number is the 6 so the byte that had to be changed was the 50*6=300).
 
 We identified the byte that needed to be changed:
+
 ![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task5_LOGBOOK9_1.png)
 
 Next, we changed the byte to ```FF```:
+
 ![Image 2.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task5_LOGBOOK9_2.png)
 
 
 Finally we used the ```diff```command to compare the original and modified decrypted texts. These were the results:
+
 ![Image 3.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task5_LOGBOOK9_3.png)
 
 From this, we concluded that the corruption of a single byte in the ciphertext resulted in the loss of 15 bytes of information in the decrypted text.
 
-This behavior matches the expected result in ECB mode, where each block of ciphertext is decrypted independently. Therefore, a corruption in one byte only affects the corresponding byte in the decrypted plaintext. In our case, the corrupted byte impacted 15 bytes of the plaintext, likely due to the padding or block cipher structure.
+This behavior matches the expected result in ECB mode, where each block of ciphertext is decrypted independently. Therefore, a corruption in one byte only affects the corresponding byte in the decrypted plaintext. In our case, the corrupted byte impacted 14 bytes of the plaintext, likely due to the padding or block cipher structure.
 
 ###### AES-128-CBC
 
@@ -240,6 +243,8 @@ After modifying the byte, we used the diff command to compare the original and m
 
 ![Image 6.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task5_LOGBOOK9_6.png)
 
+
+In CBC mode, when a single byte in the ciphertext is corrupted, it causes two effects in the decrypted text: the corresponding byte in the same block is corrupted, and the entire subsequent block becomes corrupted as well. This happens because each ciphertext block depends on the previous one through XOR operation before encryption. Therefore, if a byte is altered in the ciphertext, not only is the byte in the same block affected, but the integrity of the following block is also compromised, leading to a larger loss of information. In our case, the change of one byte resulted in the corruption of 14 bytes in the decrypted message. This illustrates how the error propagation in CBC mode can affect multiple bytes in the decrypted plaintext.
 
 
 ###### AES-128-CTR
