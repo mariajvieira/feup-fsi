@@ -202,4 +202,16 @@ In CBC mode, a single corrupted block causes errors in that block and all subseq
 
 CTR allows independent decryption of blocks, supporting parallelism.
 ECB and CBC require sequential processing.
+
+
 #### Task 5
+We started by modifing the byte ```0x12C```(300 in decimal because our group number is the 6 so the byte that had to be changed was the 50*6=300).
+(IMAGEM)
+
+And we changed to ```FF```:
+(IMAGEM)
+
+ ###### AES-128-ECB
+ 
+
+
