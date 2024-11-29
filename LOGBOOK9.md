@@ -181,7 +181,7 @@ Converts the block cipher into a stream cipher by combining a counter (derived f
 Allows random access to encrypted data and supports parallel processing.
 
 
- ##### When decrypting, which flags did you need to specify? What is the main difference between AES-128-CTR and the other modes?
+ ##### "When decrypting, which flags did you need to specify? What is the main difference between AES-128-CTR and the other modes?"
 
 ###### Flags Required for Decryption:
 
