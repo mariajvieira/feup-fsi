@@ -226,5 +226,36 @@ This behavior matches the expected result in ECB mode, where each block of ciphe
 
 ###### AES-128-CBC
 
+We started by modifying the byte at offset ```0x12C``` (300 in decimal, as our group number is 6, so the byte that had to be changed was 50*6=300).
+
+We identified the byte that needed to be changed:
+
+![Image 4.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task5_LOGBOOK9_4.png)
+
+Next, we changed the byte to ```FF```:
+
+![Image 5.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task5_LOGBOOK9_5.png)
+
+After modifying the byte, we used the diff command to compare the original and modified decrypted texts. These were the results:
+
+![Image 6.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task5_LOGBOOK9_6.png)
+
+
 
 ###### AES-128-CTR
+
+We started by modifying the byte at offset ```0x12C``` (300 in decimal, as our group number is 6, so the byte that had to be changed was 50*6=300).
+
+We identified the byte that needed to be changed:
+
+![Image 7.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task5_LOGBOOK9_7.png)
+
+Next, we changed the byte to ```FF```:
+
+![Image 8.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task5_LOGBOOK9_8.png)
+
+After modifying the byte, we used the diff command to compare the original and modified decrypted texts. These were the results:
+
+![Image 9.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task5_LOGBOOK9_9.png)
+
+In this case, the corruption of a single byte in the ciphertext, after decrypting using CTR mode, only affects that specific byte in the decrypted plaintext. This is because CTR mode, a stream cipher, processes each byte independently. Unlike block ciphers such as ECB or CBC, where a single corrupted byte can impact multiple blocks or bytes due to chaining or block structure, CTR mode’s encryption and decryption operate on individual bytes with no interdependence. Therefore, when a byte is altered, only that byte in the decrypted output is corrupted, while the rest of the plaintext remains intact.
