@@ -87,3 +87,9 @@ for idx_password in range(1, 41):  # Assuming the password hash length is less t
                 print("Password hash:", admin_password_hash)
                 exit(0)
 ```
+
+Then we changed the delay to 1, to handle possible limitations in responde time of the server.
+By running the exploit, we obtained the hashed password!
+
+![Image 3](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF8_img3.png)
+
