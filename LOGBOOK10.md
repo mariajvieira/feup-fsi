@@ -14,6 +14,9 @@ Then, we built the request and sent it using the browser:
 http://www.seedlab-hashlen.com/?myname=MariaVieira&uid=1001&lstcmd=1&mac=1b7ae954e7654d0df10f49c001b146bcc00341355349f58fd7ce0b0e79e1d06e
 
 
+> curl "http://www.seedlab-hashlen.com/?myname=MariaVieira&uid=1001&lstcmd=1&mac=1b7ae954e7654d0df10f49c001b146bcc00341355349f58fd7ce0b0e79e1d06e"
+
+
 #### Task 2
 
 #### Task 3
