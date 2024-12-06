@@ -113,4 +113,8 @@ The vulnerable endpoint is the NotificationX Analytics API. The attack is carrie
 
 #### The attack will allow you to extract information from the server's database. Specifically, you want to find the administrator's password, but as dictated by good security practices, it is not stored in plain text in the database, but as a hash of the original password. For this server, in more detail, what is the password storage policy?
 
+The server likely follows WordPress's default policy of storing passwords as hashed values using the wp_users table. WordPress uses PHP’s wp_hash_password() function, which relies on modern hashing algorithms like bcrypt, providing computational security against direct password retrieval.
+
 #### Is storing a hashed password secure in the sense that it makes recovering the original password impossible? This issue is very common not only in the case of vulnerabilities but also in data leaks. There are various ways to attempt to reverse hash functions to recover passwords and tools to automate this process.
+
+Hashing makes direct recovery of the original password impossible, but it does not prevent attacks. In this case, using tools like Hashcat with popular wordlists (e.g., rockyou.txt) allows attackers to automate the recovery of weak or common passwords. Stronger protection would require the use of salted hashes and encouraging users to set complex passwords.
