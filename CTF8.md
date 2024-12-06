@@ -104,7 +104,12 @@ With this command we finally obtained the password ```heartbroken```.
 
 #### You already know that the goal is to exploit an SQL injection vulnerability. Are there any reported vulnerabilities in public databases and/or tools that allow the discovery and exploitation of SQL injection vulnerabilities?
 
+Yes, we used CVE-2024-1698 for the NotificationX plugin, which allowed SQL injection due to improperly sanitized input fields.
+
 #### What is the vulnerable endpoint of the website, and how can an attack be carried out? How can the vulnerability be classified?
+
+The vulnerable endpoint is the NotificationX Analytics API. The attack is carried out by injecting malicious SQL payloads into the type parameter, exploiting improper input validation. This is a time-based blind SQL injection, where the injected SQL queries cause the server's response time to be delayed based on the condition specified. This allows attackers to extract data from the database by observing response times, without directly revealing the data. The vulnerability is classified as improper input sanitization."
+
 
 #### The attack will allow you to extract information from the server's database. Specifically, you want to find the administrator's password, but as dictated by good security practices, it is not stored in plain text in the database, but as a hash of the original password. For this server, in more detail, what is the password storage policy?
 
