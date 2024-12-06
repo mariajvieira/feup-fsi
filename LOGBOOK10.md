@@ -57,17 +57,17 @@ SHA256 will be performed in the following padded message:
 ```
 123456:myname=MariaVieira&uid=1001&lstcmd=1
 \x80
-\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00
-\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00
-\x00\x00\x01\x58
+\x00\x00\x00\x00\x00\x00\x00\x00\x00
+\x00\x00\x00\x00\x00\x00\x00\x00\x00
+\x01\x58
 
 ```
 
-Because of the 21 bytes of padding, we added ```\x00```21 times before the length field.
+Because of the 21 bytes of padding, we added ```\x00``` 18 times, because the other 3 bytes are ```\x80```and ```\x01\x58```.
 
 Converting to URL enconding, we obtained:
 ```
-%80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%58
+%80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%58
 ```
 
 
@@ -117,16 +117,16 @@ Then we ran the code, obtaining the new MAC for the extended request:
 
 ![Image 3](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task3_LOGBOOK10.png)
 
-Finally, we could build the url to the attack:
-
+Finally, we could build the url to the attack using:
 - Request from task1
-- PADDING from task2: %80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%58
+- Padding from task2: %80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%58
 - MAC from task3: 301f72317f48d9351690d119d77a527b1b236fc6f7992653c91e9014e1f6279d
 
-ESTA MAL
+This was the final URL:
+```
+http://10.9.0.80/?myname=MariaVieira&uid=1001&lstcmd=1%80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%58&download=secret.txt&mac=301f72317f48d9351690d119d77a527b1b236fc6f7992653c91e9014e1f6279d
+```
 
-http://10.9.0.80/?myname=MariaVieira&uid=1001&lstcmd=1%80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%58
-&download=secret.txt&mac=301f72317f48d9351690d119d77a527b1b236fc6f7992653c91e9014e1f6279d
 
 
 
