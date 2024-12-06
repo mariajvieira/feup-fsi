@@ -21,6 +21,7 @@ http://10.9.0.80/?myname=MariaVieira&uid=1001&lstcmd=1&mac=1b7ae954e7654d0df10f4
 This time, it worked, showing the files successfully:
 
 
+![Image 1](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/blob/main/Images/Task1_LOGBOOK10_2.png)
 
 #### Task 2
 
