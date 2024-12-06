@@ -99,7 +99,7 @@ int main(int argc, const char *argv[])
   c.h[7] = htole32(0x79e1d06e);
   
   // Append additional message
-  SHA256_Update(&c, "&download=secret.txt", 21);
+  SHA256_Update(&c, "&download=secret.txt", 20);
   SHA256_Final(buffer, &c);
   
   for(i = 0; i < 32; i++) {
@@ -118,13 +118,11 @@ Finally, we could build the url to the attack:
 
 - Request from task1
 - PADDING from task2: %80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%58
-- MAC from task33: 26c7c61d5a8a35bc29f57436176471b79620ec0912225b56d23b4e8925357594
+- MAC from task3: 301f72317f48d9351690d119d77a527b1b236fc6f7992653c91e9014e1f6279d
 
+ESTA MAL
 
-
-NAO TA VALIDO 
-
-http://10.9.0.80/?myname=MariaVieira&uid=1001&lstcmd=1%80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%58&download=secret.txt&mac=26c7c61d5a8a35bc29f57436176471b79620ec0912225b56d23b4e8925357594
+http://10.9.0.80/?myname=MariaVieira&uid=1001&lstcmd=1%80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%58&download=secret.txt&mac=301f72317f48d9351690d119d77a527b1b236fc6f7992653c91e9014e1f6279d
 
 
 
