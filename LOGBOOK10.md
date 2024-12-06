@@ -24,6 +24,16 @@ This time, it worked, showing the files successfully:
 
 ![Image 1](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task1_LOGBOOK10_2.png)
 
+
+Then, we did the download request:
+- We had to calculate the MAC again with ```echo -n "123456:myname=MariaVieira&uid=1001&lstcmd=1&download=secret.txt" | sha256sum```
+- Sent the updated url: 
+> http://10.9.0.80/?myname=MariaVieira&uid=1001&lstcmd=1&download=secret.txt&mac=289e9016b7caf160b0b116505c9452ac870b83598d95df94c221c47393d264d5
+
+The request was successful, showing the content of ```secret.txt```!
+
+![Image 2](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task1_LOGBOOK10_3.png)
+
 #### Task 2
 
 #### Task 3
