@@ -62,7 +62,10 @@ SHA256 will be performed in the following padded message:
 ```
 Because of the 21 bytes of padding, we added ```\x00```21 times before the length field.
 
-
+Converting to URL enconding, we obtained:
+```
+%80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%58
+```
 
 
 #### Task 3
