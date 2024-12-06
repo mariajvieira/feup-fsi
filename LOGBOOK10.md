@@ -17,11 +17,11 @@ The result was **1b7ae954e7654d0df10f49c001b146bcc00341355349f58fd7ce0b0e79e1d06
 
 Then, we built the request and sent it using the browser: 
 ```
-http://www.seedlab-hashlen.com/?myname=MariaVieira&uid=1001&lstcmd=1mac=1b7ae954e7654d0df10f49c001b146bcc00341355349f58fd7ce0b0e79e1d06e
+http://www.seedlab-hashlen.com/?myname=MariaVieira&uid=1001&lstcmd=1&mac=1b7ae954e7654d0df10f49c001b146bcc00341355349f58fd7ce0b0e79e1d06e
 ```
 This didn´t work, so we tried to use 10.9.0.80 in the url:
 ```
-http://10.9.0.80/?myname=MariaVieira&uid=1001&lstcmd=1&mac=1b7ae954e7654d0df10f49c001b146bcc00341355349f58fd7ce0b0e79e1d06e&subid1=20241206-1030-1288-97a0-15adcfd528ba
+http://10.9.0.80/?myname=MariaVieira&uid=1001&lstcmd=1&mac=1b7ae954e7654d0df10f49c001b146bcc00341355349f58fd7ce0b0e79e1d06e
 ```
 This time, it worked, showing the files successfully:
 
@@ -126,6 +126,10 @@ This was the final URL:
 ```
 http://10.9.0.80/?myname=MariaVieira&uid=1001&lstcmd=1%80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%58&download=secret.txt&mac=301f72317f48d9351690d119d77a527b1b236fc6f7992653c91e9014e1f6279d
 ```
+
+The request was successful!! :)
+
+![Image 4](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task3_LOGBOOK10_2.png)
 
 
 
