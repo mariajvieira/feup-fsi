@@ -93,7 +93,11 @@ By running the exploit, we obtained the hashed password!
 
 ![Image 3](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF8_img3.png)
 
+To recover the original password, we used Hashcat to crack the hash. We started by saving the hash in a file named password.txt. Then, we ran the Hashcat command to crack the hash using the rockyou.txt wordlist:
 
+```hashcat -m 400 -a 0 password.txt rockyou.txt```
+
+With this command we finally obtained the password ```heartbroken```.
 
 
 ### Questions
