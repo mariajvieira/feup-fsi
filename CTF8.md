@@ -93,3 +93,15 @@ By running the exploit, we obtained the hashed password!
 
 ![Image 3](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF8_img3.png)
 
+
+
+
+### Questions
+
+#### You already know that the goal is to exploit an SQL injection vulnerability. Are there any reported vulnerabilities in public databases and/or tools that allow the discovery and exploitation of SQL injection vulnerabilities?
+
+#### What is the vulnerable endpoint of the website, and how can an attack be carried out? How can the vulnerability be classified?
+
+#### The attack will allow you to extract information from the server's database. Specifically, you want to find the administrator's password, but as dictated by good security practices, it is not stored in plain text in the database, but as a hash of the original password. For this server, in more detail, what is the password storage policy?
+
+#### Is storing a hashed password secure in the sense that it makes recovering the original password impossible? This issue is very common not only in the case of vulnerabilities but also in data leaks. There are various ways to attempt to reverse hash functions to recover passwords and tools to automate this process.
