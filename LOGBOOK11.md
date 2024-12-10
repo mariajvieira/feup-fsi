@@ -9,22 +9,22 @@ We set up the certificate and ran the commands:
 
 From the output, we answered to the questions:
 
-- What part of the certificate indicates this is a CA’s certificate?
+- **What part of the certificate indicates this is a CA’s certificate?**
 
 We can identify that is a CA certificate in the Basic Constraints field, whith ```CA: TRUE```.
 
 ![Image 1](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task1_LOGBOOK11_1.png)
 
--  What part of the certificate indicates this is a self-signed certificate?
+- **What part of the certificate indicates this is a self-signed certificate?**
 
 The certificate is self-signed because the Issuer and Subject fields are identical. 
 
 ![Image 1](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task1_LOGBOOK11_2.png)
 
 
--  In the RSA algorithm, we have a public exponent e, a private exponent d, a modulus n, and two secret
+- **In the RSA algorithm, we have a public exponent e, a private exponent d, a modulus n, and two secret
 numbers p and q, such that n = pq. Please identify the values for these elements in your certificate
-and key files.
+and key files.**
 
 Public exponent: 
 ```
