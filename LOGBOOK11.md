@@ -1,6 +1,6 @@
 ## Public Key Infrastructures
 
-### Task 1
+### Task 1: Becoming a Certificate Authority (CA)
 
 We set up the certificate and ran the commands: 
 
@@ -110,5 +110,61 @@ d6:3b:5e:f8:ef:30:08:d5:52:31:23:9c:46:49:1d:
 ```
 
 Secret numbers (such that **modulus=number1*number2**):
+```
+prime1:
+    00:e8:e1:12:1d:bd:6c:9e:93:e1:8e:3f:f5:c1:ff:
+    85:85:4d:dd:ce:58:32:44:ab:6d:46:52:e0:6e:9b:
+    10:31:42:ad:bc:ad:47:7f:3f:b6:4d:81:2f:ff:36:
+    fb:a6:2d:e4:52:16:db:08:aa:bd:f9:a2:ac:69:7b:
+    58:09:6d:27:a9:09:d8:0b:a1:96:d6:69:83:90:f0:
+    b9:fd:75:8c:13:29:0b:cd:d8:38:0e:57:cd:52:97:
+    e0:7d:71:46:01:45:80:8a:e5:46:0e:5b:5b:d3:8c:
+    03:68:5c:2f:4e:2a:6f:f3:e6:c4:ca:1e:b2:af:eb:
+    52:43:6b:fa:f9:ed:3d:ee:fd:dd:1f:49:80:3a:c7:
+    43:cc:d7:ec:fc:b8:75:e4:1c:6d:d5:e0:13:7c:fb:
+    8e:09:9c:e5:28:75:6a:c4:6a:6e:cf:bf:26:87:1e:
+    03:8b:97:01:49:52:97:b3:89:64:f5:8e:47:5b:be:
+    fb:17:5a:b8:a7:69:18:d7:f0:4a:0e:1a:c9:20:b1:
+    c9:d7:b9:03:36:cf:8d:a0:ad:4e:dc:d7:6e:5e:e5:
+    c4:af:fb:84:86:62:df:97:a8:a7:00:36:79:34:29:
+    b7:04:02:ec:ac:3e:8b:26:47:c8:8c:e6:b7:66:43:
+    22:5b:bd:c2:b1:63:9a:f0:2c:e4:32:19:21:2c:2f:
+    29:c5
+prime2:
+    00:cc:41:5f:68:33:36:73:22:cb:7a:0a:2f:9e:7a:
+    fc:1f:8a:4a:87:ff:03:1d:da:2a:0b:6e:d4:b0:0c:
+    17:1d:ca:be:0a:a3:02:6f:58:7c:4e:30:c1:63:50:
+    87:72:2b:e2:a9:98:aa:63:77:50:11:21:b7:5b:95:
+    19:94:c0:7f:92:b6:57:2a:85:df:78:f8:a2:35:a3:
+    8e:b1:2b:ea:2e:27:0a:a7:05:e1:f5:3f:40:42:7a:
+    80:5b:e5:88:8e:75:a1:d8:37:19:73:c6:4b:48:14:
+    a4:6f:b4:79:eb:56:77:ba:b8:50:75:f6:f9:f9:e4:
+    5d:91:9a:26:af:a9:32:aa:4b:72:17:c2:23:e0:0f:
+    65:53:3e:95:0a:f4:46:9f:75:23:c0:27:5c:bc:c4:
+    f7:5a:c0:81:84:e5:53:f6:4f:56:5a:38:41:30:39:
+    b1:71:a1:80:8e:79:6a:3c:b6:a4:49:e7:b2:8d:65:
+    b1:e1:29:f7:de:c6:88:d2:9d:ed:4e:b6:c7:fc:ce:
+    70:9c:ce:61:17:44:7d:76:fa:51:75:8b:67:22:23:
+    6a:43:93:91:90:14:3d:d7:6b:5a:e0:ef:b9:de:d3:
+    9f:a1:55:ee:21:e6:45:06:f4:1a:21:08:5e:46:45:
+    b2:b1:c5:84:14:2b:f0:35:b2:64:f0:64:ce:c5:4b:
+    d1:23
+```
 
+
+
+### Task 2: Generating a Certificate Request for Your Web Server
+
+We generated the key for ```www.vieira2024.com```:
+
+```
+openssl req -newkey rsa:2048 -sha256 \
+-keyout vieira2024.key -out vieira2024.csr \
+-subj "/CN=www.vieira2024.com/O=Vieira 2024 LTD./C=PT" \
+-passout pass:dees \
+-addext "subjectAltName = DNS:www.vieira2024.com, \
+DNS:www.maria2024.com, \
+DNS:www.mariavieira2024.com"
+```
+### Task 3: Generating a Certificate for your server
 
