@@ -177,4 +177,6 @@ Then, we uncommented the line ```copy_extensions = copy``` in the ```myCA_openss
 
 After this, by running ```openssl x509 -in server.crt -text -noout```we verified that the alternative names were there.
 
+![Image 1](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task3_LOGBOOK11.png)
+
 
