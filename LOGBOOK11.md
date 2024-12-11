@@ -180,3 +180,6 @@ After this, by running ```openssl x509 -in server.crt -text -noout```we verified
 ![Image 1](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task3_LOGBOOK11.png)
 
 
+### Task 4: Deploying Certificate in an Apache-Based HTTPS Website
+
+
