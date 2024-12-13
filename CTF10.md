@@ -69,12 +69,25 @@ First, we substituted the characters with the highest frequency with the most co
 
 That way, we started to find some words and parts of words. We continued substituing and then we find some words like: ```Negociação```, ```Proposta```, ```Empresa```, ```Contrato```, (...), that helped us understand the context of the text.
 
-## Decrypted text
+## Decrypted text and flag
 
-We discourved the the text that was in the newspaper and we made some corrections, adding spaces, accents, and commas as well:
+We discourved the the text that was in the newspaper:
+```
+ENEGOCIACAOMEDIANTEUMASITUACAODENEMATANEMDESATAAOLIVACANSOUSEDEESPERARPELASRESOLUCOESDASOUTRASPARTESENVOLVIDASATECOMOFORMADEPRESSAOPARAQUESEHATOMADAUMADECISAOOMAISRAPIDOPOSSIVELELANCOUUMAPROPOSTADEFINITIVAPELAULTIMAVEZESPERAATEMEADOSDEFEVEREIROSEAIOCONTRATODEFINITIVONAOFORASSINADOAOLIVAABANDONARAASINSTALACOESDAEMPRESAENAOJAVERANEGOCIOPARANINGUEMAMAIOREMPRESADETRANSPORTESPORTUGUESAALASSENINICIOUUMPROCESSODEMUDANCADEIMAGEMEESTAAPREPARARASUAENTRADANOSECTORDADISTRIBUICAOINTERNAQUEREMOSAPROVEITARAOMA{ZLHMAOPPTHAAFZGE}
+```
+
+ We made some corrections, adding spaces, accents, and commas as well:
 ```
 E negociação mediante uma situação de nem ata nem desata, a Oliva cansou-se de esperar pelas resoluções das outras partes envolvidas. Até como forma de pressão para que seja tomada uma decisão o mais rápido possível, lançou uma proposta definitiva pela última vez e espera até meados de fevereiro. Se aí o contrato definitivo não for assinado, a Oliva abandonará as instalações da empresa e não haverá negócio para ninguém. A maior empresa de transportes portuguesa, Alassen, iniciou um processo de mudança de imagem e está a preparar a sua entrada no setor da distribuição interna. Queremos aproveitar ao ma {zljmaopptjaafzge}.
 ```
+We found the flag:
+
+```{!^;(~=||$;~~#!+/}``` -> ```{zljmaopptjaafzge}```
 ## Key
 
 We key to decypher was:
+
+```~/=_&%>$](|.:^[+#;!*),``` -> ```AEOSRINTDMPUCLVGFHZQBJ```
+
+(We used the following command to substitute:
+```tr '~/=_&%>$](|.:^[+#;!*),' 'AEOSRINTDMPUCLVGFHZQBJ' < L05G06.cph > substituted.txt```)
