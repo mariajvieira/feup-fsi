@@ -1,5 +1,7 @@
 ## Public Key Infrastructures
 
+## Question 1
+
 ### Task 1: Becoming a Certificate Authority (CA)
 
 We set up the certificate and ran the commands: 
@@ -180,6 +182,22 @@ After this, by running ```openssl x509 -in server.crt -text -noout```we verified
 ![Image 1](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task3_LOGBOOK11.png)
 
 
-### Task 4: Deploying Certificate in an Apache-Based HTTPS Website
+
+
+
+## Question 2
+
+**Provide a mechanism to respond to this occurrence and prevent attacks, and describe the measures an adversary might take to avoid being prevented by this mechanism while exploiting a compromised certification authority.**
+
+One effective mechanism to respond to the compromise of a certification authority (CA) is Certificate Revocation. This involves maintaining and consulting Certificate Revocation Lists (CRLs) or using the Online Certificate Status Protocol (OCSP) to validate certificates in real-time.
+
+Measures Adversaries Might Take to Evade the Mechanism:
+- Manipulating CRLs or OCSP Responses: Intercepting and forging responses to falsely mark revoked certificates as valid.
+- Timing of Exploits: Utilizing malicious certificates issued by the compromised CA before detection and revocation.
+- Targeting Systems Without Revocation Checks: Exploiting environments where revocation checks are not enforced.
+- Abusing Intermediate CAs: Using intermediate certificates signed by the compromised CA to issue harder-to-detect malicious certificates.
+- Proactive monitoring, strict enforcement of revocation checks, and adherence to best practices for certificate validation can mitigate these strategies.
+
+
 
 
