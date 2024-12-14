@@ -182,6 +182,54 @@ After this, by running ```openssl x509 -in server.crt -text -noout```we verified
 ![Image 1](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task3_LOGBOOK11.png)
 
 
+### Task 4: Deploying Certificate in an Apache-Based HTTPS Website
+
+We started by configuring the Apache server, creating the file vieira2024_apache_ssl.conf inside the shared volumes folder.
+
+Following the example of bank32, our configuration file turned out as follows:
+```
+<VirtualHost *:443> 
+    DocumentRoot /var/www/bank32
+    ServerName www.vieira2024.com
+    ServerAlias www.maria2024.com
+    ServerAlias www.mariavieira2024.com
+    DirectoryIndex index.html
+    SSLEngine On 
+    SSLCertificateFile /volumes/server.crt
+    SSLCertificateKeyFile /volumes/server.key
+</VirtualHost>
+
+<VirtualHost *:80> 
+    DocumentRoot /var/www/bank32
+    ServerName www.vieira2024.com
+    DirectoryIndex index_red.html
+</VirtualHost>
+
+# Set the following gloal entry to suppress an annoying warning message
+ServerName localhost
+```
+
+We also moved the server.crt and server.key files to the shared volumes folder.
+
+In the container's shell, we copied the previously created configuration file to the /etc/apache2/sites-available folder with the command:
+```
+$ volumes/vieira2024_apache_ssl.conf /etc/apache2/sites-available
+```
+Then we enabled the site described in it and started the Apache server:
+```
+$ a2ensite vieira2024_apache_ssl 
+$ service apache2 reload
+$ service apache start 
+```
+
+We accessed the site at https://www.vieira2024.com, but noticed that the connection was insecure.
+
+
+To solve this, we imported the ```ca.crt``` file to the certificates of the browser:
+
+![Image 4](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task4_LOGBOOK11_2.png)
+
+
 
 
 
