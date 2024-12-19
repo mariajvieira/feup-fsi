@@ -1,21 +1,96 @@
 # CTF Week #11 (Weak Encryption)
 
+We created a script called ```ctf11.py``` to exploit the vulnerability in the AES-CTR encryption used in the challenge. The script combines the logic from cipherspec.py to generate keys and perform encryption and decryption operations.
+
+The key generation function gen() creates a 16-byte key, where the first 13 bytes are fixed as 0x00, and the last 3 bytes are randomly generated. This weak key generation process allowed us to brute-force the 3-byte random part of the key, as the first 13 bytes are known.
+
+To decrypt the ciphertext, the script uses the AES algorithm in CTR mode with the provided nonce. We implemented a brute-force loop to try all possible combinations of the 3 random bytes, testing 2^24 combinations. For each key generated, we decrypted the ciphertext and checked if the output started with the string "flag{". Once the correct key was found, the flag was revealed. 
+
+The script created is shown below:
+
+```
+import os
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from binascii import unhexlify
+
+KEYLEN = 16
+
+def gen(offset=3):
+    key = bytearray(b'\x00'*(KEYLEN-offset))  # Parte fixa da chave
+    key.extend(os.urandom(offset))  # Parte aleatória da chave
+    return bytes(key)
+
+def enc(k, m, nonce):
+    cipher = Cipher(algorithms.AES(k), modes.CTR(nonce))
+    encryptor = cipher.encryptor()
+    cph = b""
+    cph += encryptor.update(m)
+    cph += encryptor.finalize()
+    return cph
+
+def dec(k, c, nonce):
+    cipher = Cipher(algorithms.AES(k), modes.CTR(nonce))
+    decryptor = cipher.decryptor()
+    msg = b""
+    msg += decryptor.update(c)
+    msg += decryptor.finalize()
+    return msg
+
+def brute_force_key(nonce, ciphertext):
+    # Parte fixa da chave, os primeiros 13 bytes
+    fixed_key_part = b'\x00' * 13
+    
+    for b1 in range(256):
+        for b2 in range(256):
+            for b3 in range(256):
+                key = fixed_key_part + bytes([b1, b2, b3])
+                decrypted = dec(key, ciphertext, nonce)
+                if decrypted.startswith(b"flag{"):
+                    print(f"Flag encontrada: {decrypted.decode()}")
+                    return decrypted
+    return None
+
+nonce_hex = "70a4d95b6e063ccf0217be9739f29a56"  # Exemplo de nonce
+ciphertext_hex = "aee5f9ea379c3a2443428bd64379e7b2f5945bc89881"  # Exemplo de criptograma
+
+nonce = unhexlify(nonce_hex)
+ciphertext = unhexlify(ciphertext_hex)
+
+brute_force_key(nonce, ciphertext)
+```
+
+After running the Python script, the flag was successfully found and printed. 
+
+![Image 1.](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/CTF11_flag.png)
+
+
+Finally, the decrypted flag was flag{asotghjifzspzqrr}.
+
+
 ## Task 1
 
 #### 1. How can I use this ciphersuite to encrypt and decrypt data?
 
-To use this ciphersuite for encrypting and decrypting data, you can rely on the three provided functions: gen() to generate a symmetric key, enc(k, m, nonce) to encrypt a plaintext m using the key k and a unique nonce, and dec(k, c, nonce) to decrypt a ciphertext c using the same key and nonce. The encryption uses AES in CTR mode, and the nonce ensures uniqueness. First, you generate a key using gen(), then encrypt a message by passing the key, plaintext, and nonce to enc. To decrypt, you pass the same key, ciphertext, and nonce to dec.
+To use this ciphersuite to encrypt and decrypt data, it is necessary to have a key and a nonce. The enc(k, m, nonce) function is used for encryption with the key k, the message m, and the nonce. For decryption, the dec(k, c, nonce) function is used with the same key k, the ciphertext c, and the nonce.
 
 #### 2. How can I exploit the vulnerability to break the code?
 
-The vulnerability in this ciphersuite lies in the weak key generation within the gen() function. The first 13 bytes of the key are fixed to \x00, and only the last 3 bytes are random, reducing the keyspace to 2^24. This allows an attacker to brute-force all possible keys efficiently. By iterating over all 2^24 possible keys, keeping the first 13 bytes fixed, and varying the last 3 bytes, it is possible to decrypt the ciphertext. The correct key can be identified when the decrypted plaintext matches the expected format, such as flag{xxxxxx}.
+The vulnerability in this ciphersuite lies in the weak key generation within the gen() function. The first 13 bytes of the key are fixed to \x00, and only the last 3 bytes are random, reducing the keyspace to 2^24. This allows an attacker to brute-force all possible keys efficiently. By iterating over all 2^24 possible keys, keeping the first 13 bytes fixed, and varying the last 3 bytes, it is possible to decrypt the ciphertext. The correct key can be identified when the decrypted plaintext matches the expected format, such as ```flag{...}```.
 
 #### 3. How can I automate the process to ensure my attack finds the flag?
 
-To automate this attack, you need to convert the provided nonce and ciphertext from hexadecimal to bytes, then iterate over all 2^24 possible keys. For each key, you combine 13 fixed bytes of \x00 with 3 bytes representing the current iteration. Using the dec function, you decrypt the ciphertext with the generated key and nonce. The script should check if the decrypted plaintext matches the expected format (e.g., flag{...}). When it does, the flag is found, and the process stops. This can be implemented efficiently in Python with a brute-force loop that systematically tests all key combinations and verifies the result.
+To automate this attack, it is necessary to convert the provided nonce and ciphertext from hexadecimal to bytes, and then iterate over all 2^24 possible keys. For each key, the first 13 bytes are fixed as \x00, while the next 3 bytes represent the current iteration. The complete key is generated by combining these 13 fixed bytes with the 3-byte random part corresponding to the current iteration.
+
+Using the dec function, the script decrypts the ciphertext with the generated key and nonce. The decrypted plaintext is checked to see if it matches the expected format ```flag{...}```. When it does, the flag has been found, and the process stops. This can be implemented efficiently in Python by using a brute-force loop that systematically tests all key combinations and verifies the result.
 
 
 ## Task 2
 
+#### What offset would be required in cipherspec.py to make it infeasible for personal machines to discover the key within a 10-year period?
+
+To make the brute-force attack infeasible within 10 years, we need to evaluate how many keys can be tested per second and then calculate how many keys can be tested in 10 years (about 3.15 × 10^8 seconds). By testing the speed of the current brute-force attack, we can estimate the required keyspace size. The goal is to increase the keyspace size by adjusting the key offset, making it large enough to prevent an attack within 10 years. For example, increasing the offset to 4 bytes would result in a keyspace of 2^32, making brute-forcing impractical.
+
+
 ## Task 3
 
+The idea of using a 1-byte nonce and not sending it over the network doesn't effectively secure the system. While it limits the number of nonces (only 256 possibilities), the real issue is the weak key generation, which allows the attacker to brute-force the keyspace efficiently. The small nonce does not significantly increase the complexity of the attack, as the attacker would still need to test all 256 nonces for each key, making the countermeasure ineffective. To improve security, the key generation process should be strengthened, not just the nonce.
