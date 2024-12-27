@@ -62,11 +62,11 @@ sniff(iface='br-f2d5ddfe66df', filter='icmp', prn=print_pkt)
 print("Capturing TCP packets from IP 192.168.1.100 to port 23...")
 sniff(iface='br-f2d5ddfe66df', filter='tcp src host 192.168.1.100 and tcp dst port 23', prn=print_pkt)
 ```
-![Image 1](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task1_LOGBOOK13_2.png)
+![Image 2](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task1_LOGBOOK13_2.png)
 
 #### Capture packets from/to a specific subnet
 ```
 print("Capturing packets from/to subnet 128.230.0.0/16...")
 sniff(iface='br-f2d5ddfe66df', filter='net 128.230.0.0/16', prn=print_pkt)
 ```
-![Image 1](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task1_LOGBOOK13_3.png)
+![Image 3](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task1_LOGBOOK13_3.png)
