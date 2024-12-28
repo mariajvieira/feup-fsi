@@ -64,3 +64,52 @@ pkt = sniff(iface='br-f2d5ddfe66df', filter='tcp and src host 10.9.0.5 and dst p
 pkt = sniff(iface='br-f2d5ddfe66df', filter='net 128.230.0.0/16', prn=print_pkt)
 ```
 ![Image 3](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task1_LOGBOOK13_3.png)
+
+
+## Task 1.2
+We created a new file ```spoof_icmp.py``` :
+
+```
+#!/usr/bin/env python3
+from scapy.all import *
+
+a = IP()
+a.src = "10.9.0.5" 
+a.dst = "10.9.0.6"
+b = ICMP()
+
+p = a/b
+
+ls(p)
+
+send(p)
+```
+
+
+### IP Header
+```a.src = "10.9.0.5"``` : Sets a fake source IP.
+a.dst = "10.9.0.6": Defines the destination IP.
+
+### ICMP Header
+```b = ICMP()``` : Creates an ICMP Echo Request packet.
+
+### Packet Assembly
+```p = a/b``` : Combines the IP and ICMP headers into one packet.
+
+### Packet Verification
+```ls(p)``` : Displays the packet fields and values for debugging.
+
+### Send Packet
+``` send(p)``` : Sends the spoofed packet to the target (10.9.0.6).
+
+
+The next step was to run the script:
+
+![Image 4](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task2_LOGBOOK13_1.png)
+
+We used Wireshark to capture the packet transmission:
+
+![Image 5](https://git.fe.up.pt/fsi/fsi2425/logs/l05g06/-/raw/main/Images/Task2_LOGBOOK13_2.png)
+
+The script demonstrates how to create and send spoofed ICMP packets to test network behavior.
+
