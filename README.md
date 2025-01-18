@@ -1,5 +1,4 @@
-
-Breve descrição do grupo
+# FSI 24/25
 
 * Turno: [L]05
 * Grupo: 06
